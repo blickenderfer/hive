@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Game 1",
+    "developers": ["Developer 1"],
+    "genres": ["Action", "Adventure"]
+  },
+  {
+    "name": "Game 2",
+    "developers": ["Developer 2"],
+    "genres": ["RPG"]
+  },
+  {
+    "name": "Game 3",
+    "developers": ["Developer 3"],
+    "genres": ["Puzzle"]
+  }
+]
