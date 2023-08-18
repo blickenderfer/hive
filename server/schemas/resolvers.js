@@ -1,13 +1,28 @@
 //finish this? my brain small 
 const { Profile } = require('../models/Profile');
+const { User, Game, Trophy, Review } = require('../models');
 const { signToken, AuthenticationError} = require('../utils/auth');
 
 const resolvers = {
-    Query: {
-    // Fetch a user's profile by their username
-    profile: async (parent, { username }, { dataSources }) => {
-      const profile = await dataSources.profileAPI.getProfileByUsername(username);
-      return profile;
+  Query: {
+    userProfile: async (_, { username }) => {
+      try {
+        const user = await User.findOne({ username })
+          .populate('games')
+          .populate('trophies')
+          .populate('reviews.game');
+        return user;
+      } catch (error) {
+        throw error;
+      }
+    },
+    game: async (_, { _id }) => {
+      try {
+        const game = await Game.findById(_id);
+        return game;
+      } catch (error) {
+        throw error;
+      }
     },
   },
   Mutation: {
