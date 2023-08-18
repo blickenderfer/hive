@@ -1,6 +1,3 @@
-//for app do we want to save games to a fave list or just save reviewed games?
-//check out context, don't need some mutations :(
-//add remove game/friend/review functionality 
 const typeDefs = `
 type User {
     _id: ID
