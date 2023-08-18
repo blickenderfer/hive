@@ -1,26 +1,28 @@
 import { useState } from 'react'
+import Login from './components/login'
+import Header from './components/header'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState('Login');
+
+  const renderPage = () => {
+    if (currentPage === 'Login') {
+      return <Login />;
+    }
+    if (currentPage === 'Dashboard') {
+      return <Dashboard />;
+    }
+  };
+
+  const handlePageChange = (page) => setCurrentPage(page);
 
   return (
     <>
-      <div class="row">
-    <div class="col s12 m6">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Card Title</span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div>
+      <Header handlePageChange={handlePageChange}></Header>
+      <main>
+        {renderPage()}
+      </main>
     </>
   )
 }
