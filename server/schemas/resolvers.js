@@ -16,7 +16,7 @@ const resolvers = {
       const updatedProfile = await dataSources.profileAPI.updateProfile(input);
       return updatedProfile;
     },
-    // Example mutation using the imported functions
+    // Checks username and password validation. 
     login: async (parent, { email, password }) => {
       const user = await Profile.findOne({ email });
       if (!user) {
