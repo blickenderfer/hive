@@ -1,5 +1,5 @@
 //complete games and review models before finishing this
-const {Schema, Model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 const gameSchema = require('./Game');
 
@@ -35,6 +35,21 @@ const profileSchema = new Schema ({
         },
     ],
 })
+
+//password middleware
+profileSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+        const preSave = 10;
+        this.password = await bcrypt.hash(this.password, preSave);
+    }
+
+next();
+});
+
+//password comparison
+profileSchema.methods.isRightPass = async function (password){
+    return bcrypt.compare(password, this.password);
+};
 
 const Profile = model('Profile', profileSchema);
 
