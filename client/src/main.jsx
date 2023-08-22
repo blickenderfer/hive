@@ -15,7 +15,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx';
 // import Home from './pages/Home';
 // import Profile from './pages/Profile';
-// import Signup from './pages/Signup';
+import Signup from './components/pages/Signup';
 import Login from './components/pages/Login.jsx';
 // import ErrorPage from './pages/Error';
 
@@ -31,12 +31,13 @@ const router = createBrowserRouter([
       }, {
         path: '/login',
         element: <Login />
-      },       //   path: '/signup',
-      //   element: <Signup />
-      // }, {
+      }, {
+        path: '/signup',
+        element: <Signup />
+      }
       //   path: '/profiles/:profileId',
       //   element: <Profile />
-      
+
     ]
   },
 ]);
