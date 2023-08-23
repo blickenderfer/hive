@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const gameSchema = require('./Game');
 
 const profileSchema = new Schema ({
-    name: {
+    username: {
         type: String,
         required: true,
         unique: true,
