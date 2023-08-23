@@ -1,10 +1,10 @@
 //complete games and review models before finishing this
-const {Schema, Model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 const gameSchema = require('./Game');
 
 const profileSchema = new Schema ({
-    name: {
+    username: {
         type: String,
         required: true,
         unique: true,
