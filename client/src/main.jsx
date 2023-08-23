@@ -17,6 +17,7 @@ import App from './App.jsx';
 // import Profile from './pages/Profile';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login.jsx';
+import Dashboard from './components/pages/Dashboard.jsx';
 // import ErrorPage from './pages/Error';
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
+      },
+       {
+        path: '/dashboard',
+        element: <Dashboard />
       }
       //   path: '/profiles/:profileId',
       //   element: <Profile />

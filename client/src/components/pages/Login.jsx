@@ -6,7 +6,7 @@ import Auth from '../../utils/auth';
 
 const Login = function(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -27,9 +27,11 @@ const Login = function(props) {
         variables: { ...formState },
       });
 
-      Auth.login(data?.login.token);
+      Auth.login(data.login.token);
     } catch (e) {
+      //console.log(error)
       console.error(e);
+  
     }
 
     // clear form values
@@ -50,12 +52,12 @@ const Login = function(props) {
                                 <form className="col s12" onSubmit={handleFormSubmit}>
                                     <div className="row">
                                         <div className="input-field col s12">
-                                                <input id="email" type="email" className="validate" onChange={handleChange}/>
+                                                <input id="email" type="email" className="validate" value={formState.email} name="email" onChange={handleChange}/>
                                                 <label for="email">Email</label>
                                                 <span className="helper-text" data-error="wrong" data-success="right"></span>
                                         </div>
                                         <div className="input-field col s12">
-                                                <input id="password" type="password" className="validate" onChange={handleChange}/>
+                                                <input id="password" type="password" className="validate" value={formState.password} name="password" onChange={handleChange}/>
                                                 <label for="password">Password</label>
                                                 <span className="helper-text" data-error="wrong" data-success="right"></span>
                                             </div>

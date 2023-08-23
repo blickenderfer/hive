@@ -1,4 +1,4 @@
 const Profile = require('./Profile');
-const Review = require('./Review');
+// const Review = require('./Review');
 
-module.exports = { Profile, Review };
+module.exports = { Profile };
