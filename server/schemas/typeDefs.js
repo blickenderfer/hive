@@ -3,11 +3,10 @@ type User {
     _id: ID
     username: String
     email: String
-    password: String 
-    games: [Game]
-    trophies: [Trophy]
-    reviews: [Reviews]
-    friends: [User]
+    # games: [Game]
+    # trophies: [Trophy]
+    # reviews: [Reviews]
+    # friends: [User]
 }
 
 type Auth {

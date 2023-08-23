@@ -31,8 +31,9 @@ const Signup = function () {
       const { data } = await addUser({
         variables: { ...formState },
       });
-      // console.log(error)
-      Auth.login(data.addProfile.token);
+      console.log(data)
+      console.log(error)
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
