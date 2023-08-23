@@ -40,18 +40,26 @@ const resolvers = {
     }, */
     // Checks username and password validation. 
     login: async (parent, { email, password }) => {
+      console.log({email, password})
       const user = await Profile.findOne({ email });
       if (!user) {
-        throw new AuthenticationError('User not found');
+        throw AuthenticationError;
       }
 
-      const correctPassword = user.verifyPassword(password);
-      if (!correctPassword) {
-        throw new AuthenticationError('Incorrect password');
+      // const correctPassword = user.verifyPassword(password);
+      
+      // if (!correctPassword) {
+      //   throw new Error('Incorrect password');
+      // }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+       if (!correctPw) {
+        throw Error;
       }
 
       const token = signToken(user);
-
+      console.log({ token, user })
       return { token, user };
     },
   },
