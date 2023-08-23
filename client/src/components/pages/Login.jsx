@@ -27,7 +27,7 @@ const Login = function(props) {
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      Auth.login(data?.login.token);
     } catch (e) {
       console.error(e);
     }
@@ -41,30 +41,30 @@ const Login = function(props) {
 
     return (
         <>
-            <div class="row login-card">
+            <div className="row login-card">
                 <div>
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">Log In</span>
-                            <div class="row">
-                                <form class="col s12">
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                                <input id="email" type="email" class="validate" />
+                    <div className="card blue-grey darken-1">
+                        <div className="card-content white-text">
+                            <span className="card-title">Log In</span>
+                            <div className="row">
+                                <form className="col s12" onSubmit={handleFormSubmit}>
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                                <input id="email" type="email" className="validate" onChange={handleChange}/>
                                                 <label for="email">Email</label>
-                                                <span class="helper-text" data-error="wrong" data-success="right"></span>
+                                                <span className="helper-text" data-error="wrong" data-success="right"></span>
                                         </div>
-                                        <div class="input-field col s12">
-                                                <input id="password" type="password" class="validate" />
+                                        <div className="input-field col s12">
+                                                <input id="password" type="password" className="validate" onChange={handleChange}/>
                                                 <label for="password">Password</label>
-                                                <span class="helper-text" data-error="wrong" data-success="right"></span>
+                                                <span className="helper-text" data-error="wrong" data-success="right"></span>
                                             </div>
                                     </div>
                                     <button type="submit">Log In</button>
                                 </form>
                             </div>
                         </div>
-                        <div class="card-action">
+                        <div className="card-action">
                             <p>New User?</p>
                             <Link to="/signup">Sign Up</Link>
                         </div>

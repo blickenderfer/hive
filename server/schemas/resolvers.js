@@ -1,6 +1,6 @@
 //finish this? my brain small 
-const { Profile } = require('../models/Profile');
-const { User, Game, Trophy, Review } = require('../models');
+// const { Profile } = require('../models/Profile');
+const { Profile, Game, Trophy, Review } = require('../models');
 const { signToken, AuthenticationError} = require('../utils/auth');
 
 const resolvers = {
@@ -26,11 +26,18 @@ const resolvers = {
     },
   },
   Mutation: {
+    addUser: async (parent, {username, email, password}) => {
+      const newUser = await Profile.create({username, email, password})
+      const token = signToken(newUser);
+      return { token, newUser };
+
+    },
     // Update a user's profile information
+    /*
     updateProfile: async (parent, { input }, { dataSources }) => {
       const updatedProfile = await dataSources.profileAPI.updateProfile(input);
       return updatedProfile;
-    },
+    }, */
     // Checks username and password validation. 
     login: async (parent, { email, password }) => {
       const user = await Profile.findOne({ email });

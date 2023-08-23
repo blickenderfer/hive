@@ -41,11 +41,11 @@ type Query {
 }
 
 type Mutation {
-    signup(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addGame(username: String!, game: ID!): User
     addTrophy(username: String!, trophy: ID!): User
-    writeReview(username: String!, game: ID!, body: String!): Review
+    writeReview(username: String!, game: ID!, body: String!): Reviews
     addFriend(username: String!, friendUsername: String!): User
   }
 `
