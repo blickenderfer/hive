@@ -41,8 +41,9 @@ const Login = function(props) {
     });
   };
 
+
     return (
-        <>
+        <div className='flex-column justify-flex-start min-100-vh logPgs'>
             <div className="row login-card">
                 <div>
                     <div className="card blue-grey darken-1">
@@ -73,7 +74,7 @@ const Login = function(props) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 
 }

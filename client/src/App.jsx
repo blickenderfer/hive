@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 // import Login from './components/login'
-// import Header from './components/header'
+import Header from './components/header'
 // import './App.css'
 
 // function App() {
@@ -68,13 +68,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
-        {/* <Header /> */}
+         <Header />
         <div className="container">
           <Outlet />
         </div>
         {/* <Footer /> */}
-      </div>
     </ApolloProvider>
   );
 }
