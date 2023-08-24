@@ -41,7 +41,7 @@ const Signup = function () {
   };
 
   return (
-    <>
+    <div className='flex-column justify-flex-start min-100-vh center-align'>
       <div className="row login-card">
         <div>
           <div className="card blue-grey darken-1">
@@ -77,7 +77,7 @@ const Signup = function () {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 
 }
