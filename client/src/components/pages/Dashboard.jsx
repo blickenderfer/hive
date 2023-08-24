@@ -2,19 +2,25 @@
 
 export default function Dashboard() {
     return (
-        <div className="container">
-        <div className="row">
+        <>
+        <div class="input-field col s12">
+          <input id="search" type="search"/>
+          <label>Game Search</label>
+          <span class="helper-text" data-error="wrong" data-success="right"></span>
+          <button class="search-submit" type="submit">Search</button>
+          </div>
 
-        <div className="col s3 teal lighten-2">
-            <p>user info here</p>
+        <div>
+          <input id="search" type="search"/>
+          <label></label>
+          <span class="helper-text" data-error="wrong" data-success="right">Review</span>
+          <textarea></textarea>
+          <button class="review-submit" type="submit">Submit</button>
         </div>
-  
-        <div className="col s9 teal darken-2">
-            <p>game search here</p>
-        </div>
-  
-      </div>
-      </div>
+
+        </>
+
+        
         )
 
 }       
