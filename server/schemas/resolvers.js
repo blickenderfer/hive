@@ -1,8 +1,19 @@
 //finish this? my brain small 
 // const { Profile } = require('../models/Profile');
+//api key 68eb0690763d46b0b8c318062068f9bb
 const { Profile, Game, Trophy, Review } = require('../models');
 const { signToken, AuthenticationError} = require('../utils/auth');
-
+const axios = require('axios');
+//url to search api for games 
+const apiOptions = {
+  method: 'GET',
+  url: 'https://rawg-video-games-database.p.rapidapi.com/games',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-rapid-api-Key': '68eb0690763d46b0b8c318062068f9bb',
+    'X-rapid-api-Host': 'rawg-video-games-database.p.rapidapi.com' 
+  }
+};
 const resolvers = {
   Query: {
     userProfile: async (_, { username }) => {
@@ -16,6 +27,7 @@ const resolvers = {
         throw error;
       }
     },
+    //need to retool to work w/the api
     game: async (_, { _id }) => {
       try {
         const game = await Game.findById(_id);
@@ -25,6 +37,20 @@ const resolvers = {
       }
     },
   },
+//  game search w/api ver. 0.5
+//  testing w/the api key to search for a game using a search bar function added in the front end. 
+
+
+//  game: async (_, { _id }) => {
+//  try {
+//        const response = await axios.request(apiOptions);
+//          console.log(response.data);
+//} catch (error) {
+//  console.log(error);
+//}
+//}
+
+
   Mutation: {
     addUser: async (parent, {username, email, password}) => {
       const newUser = await Profile.create({username, email, password})
