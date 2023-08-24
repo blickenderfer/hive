@@ -1,16 +1,20 @@
+import { Link } from 'react-router-dom';
+
 export default function Header({ handlePageChange }) {
     return (
         <>
-            <nav>
-                <div class="nav-wrapper header">
-                    <a href="#" class="brand-logo">Hive</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        {/* <li><a href="sass.html">Sass</a></li>
-                        <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li> */}
-                    </ul>
-                </div>
-            </nav>
+        <div className='container'>
+        <nav>
+            <div className="nav-wrapper">
+                <a href="/dashboard" className="title"><h1>Hive</h1></a>
+                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    <li><a><Link to="/games">Games</Link></a></li>
+                    <li><a><Link to="/review">Reviews</Link></a></li>
+                    <li><a className="waves-effect waves-light btn-small">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        </div>
         </>
     )
 }
