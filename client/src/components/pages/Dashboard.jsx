@@ -3,7 +3,7 @@
 export default function Dashboard() {
     return (
         <>
-        <div class="input-field col s12">
+            <div class="input-field col s12">
           <input id="search" type="search"/>
           <label>Game Search</label>
           <span class="helper-text" data-error="wrong" data-success="right"></span>
@@ -18,9 +18,11 @@ export default function Dashboard() {
           <button class="review-submit" type="submit">Submit</button>
         </div>
 
+
+
         </>
 
-        
-        )
+
+    )
 
 }       
