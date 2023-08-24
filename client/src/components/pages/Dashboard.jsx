@@ -11,8 +11,8 @@ export default function Dashboard() {
           </div>
 
         <div>
+        <label>Review Title</label>
           <input id="search" type="search"/>
-          <label></label>
           <span class="helper-text" data-error="wrong" data-success="right">Review</span>
           <textarea></textarea>
           <button class="review-submit" type="submit">Submit</button>
