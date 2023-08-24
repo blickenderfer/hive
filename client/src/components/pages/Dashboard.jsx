@@ -1,15 +1,19 @@
+//possibily add a home feed showing reviews?
+
 export default function Dashboard() {
     return (
-        <div class="row">
+        <div className="container">
+        <div className="row">
 
-        <div class="col s3">
+        <div className="col s3 teal lighten-2">
             <p>user info here</p>
         </div>
   
-        <div class="col s9">
+        <div className="col s9 teal darken-2">
             <p>game search here</p>
         </div>
   
+      </div>
       </div>
         )
 
