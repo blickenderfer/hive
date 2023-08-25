@@ -42,7 +42,7 @@ const resolvers = {
             title: response.data.results[i].name,
             released: response.data.results[i].released,
             platforms : response.data.results[i].platforms,
-            genres: response.data.results[i] .genres, 
+            genres: response.data.results[i].genres, 
           }
           allGames.push(game)
         }
