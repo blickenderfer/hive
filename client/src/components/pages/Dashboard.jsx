@@ -38,7 +38,7 @@ export default function Dashboard() {
                         <input placeholder="Search Games" id="game-search" type="text" class="validate"/>
                            
                     </div>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat expedita labore quas, iusto corporis libero harum eveniet beatae consectetur neque illum et aliquid sit? Repellat unde possimus, sapiente quod id officia iusto ad alias ea, mollitia veritatis natus illum fugiat.
+
                 </div>
 
             </div>
