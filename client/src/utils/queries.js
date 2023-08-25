@@ -1,4 +1,5 @@
 //maybe put api query here? Or in both? Talk to instructors in class 2 figure it out
+//make a query to search for games Api($title: String) { api(title: $title){title}}
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
