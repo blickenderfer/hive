@@ -46,3 +46,11 @@
   background-color: rgb(96, 91, 125)
 }
 
+.homeBg {
+  background-image: url('./assets/hivebg.jpg');
+  height: 93.4vh;
+}
+
+.subtitle {
+  display: block;
+}
