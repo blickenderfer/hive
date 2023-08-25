@@ -1,4 +1,6 @@
-const typeDefs = `
+import { gql } from '@apollo/client';
+
+const typeDefs = gql`
 type User {
     _id: ID
     username: String
@@ -38,8 +40,21 @@ type Reviews {
 type API_games {
     title: String
     released: String
-    platforms: String
-    genres: String
+    platforms: [Platform]
+    genres: [Genre]
+}
+type Platform {
+    platform: PlatformData
+}
+type PlatformData {
+    id: Int
+    name: String
+    slug: String
+}
+type Genre {
+    id: Int
+    name: String
+    slug: String
 }
 
 type Query {

@@ -44,9 +44,11 @@ const resolvers = {
             platforms : response.data.results[i].platforms,
             genres: response.data.results[i].genres, 
           }
+          console.log(response.data.results[i])
           allGames.push(game)
         }
         console.log(response.data);
+        console.log(JSON.stringify(allGames, null, 2));
         return allGames;
       } catch (error) {
         console.error(error);
