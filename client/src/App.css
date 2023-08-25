@@ -54,3 +54,10 @@
 .subtitle {
   display: block;
 }
+
+.homepageST {
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
