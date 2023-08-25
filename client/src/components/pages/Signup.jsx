@@ -41,10 +41,10 @@ const Signup = function () {
   };
 
   return (
-    <>
+    <div className='flex-column justify-flex-start min-100-vh logPgs'>
       <div className="row login-card">
         <div>
-          <div className="card blue-grey darken-1">
+          <div className="card  blue-grey darken-1">
             <div className="card-content white-text">
               <span className="card-title">Sign Up</span>
               <div className="row">
@@ -77,7 +77,7 @@ const Signup = function () {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 
 }
