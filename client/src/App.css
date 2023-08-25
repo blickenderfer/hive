@@ -5,4 +5,20 @@
   text-align: center;
 }
 
+.user-section {
+  background-color: lightcoral;
+}
+
+.user-section img {
+  border-radius: 50px;
+  margin-top: 1rem;
+}
+
+.user-section h3 {
+  font-size: 2em;
+}
+
+.game-search-section {
+  background-color: aquamarine;
+}
 
