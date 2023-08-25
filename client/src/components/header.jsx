@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
-//fix navbar aubrey wtf idiot
+import Auth from '../utils/auth';
+
 export default function Header({ handlePageChange }) {
     return (
-        <>
-        <nav className-="navbar">
+        <> 
+      <nav>
             <div className="nav-wrapper">
-                <h1 className='title'><a href="/dashboard" className="title">hive</a></h1>
-                
-                <ul className="right hide-on-med-and-down nav-links">
+                <a href="/dashboard" className="title brand-logo"> <h1 className='title'>Hive</a></h1>
+                <ul id="nav-mobile" className="right hide-on-med-and-down nav-links">
                     <li><a><Link to="/games">Games</Link></a></li>
                     <li><a><Link to="/review">Reviews</Link></a></li>
-                    <li><a className="waves-effect waves-light btn-small">Logout</a></li>
+                    {Auth.loggedIn() ? ( <li><a className="waves-effect waves-light btn-small" onClick={Auth.logout}>Logout</a></li> ) : (<li><a className="waves-effect waves-light btn-small"><Link to="/">Login</Link></a></li> )}
                 </ul>
                 </div>
         </nav>
