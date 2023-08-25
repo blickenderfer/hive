@@ -34,9 +34,18 @@ type Reviews {
     game: Game
 }
 
+
+type API_games {
+    title: String
+    released: String
+    platforms: String
+    genres: String
+}
+
 type Query {
     userProfile(username: String): User
     game(_id: ID): Game
+    getVideoGames(title: String): [API_games]
 }
 
 type Mutation {

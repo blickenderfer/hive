@@ -4,16 +4,19 @@
 const { Profile, Game, Trophy, Review } = require('../models');
 const { signToken, AuthenticationError} = require('../utils/auth');
 const axios = require('axios');
+require('dotenv').config()
+
 //url to search api for games 
-const apiOptions = {
-  method: 'GET',
-  url: 'https://rawg-video-games-database.p.rapidapi.com/games',
-  headers: {
-    'Content-Type': 'application/json',
-    'X-rapid-api-Key': '68eb0690763d46b0b8c318062068f9bb',
-    'X-rapid-api-Host': 'rawg-video-games-database.p.rapidapi.com' 
-  }
-};
+// const apiOptions = {
+//   method: 'GET',
+//   url: 'https://rawg-video-games-database.p.rapidapi.com/games',
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'X-rapid-api-Key': '68eb0690763d46b0b8c318062068f9bb',
+//     'X-rapid-api-Host': 'rawg-video-games-database.p.rapidapi.com' 
+//   }
+// };
+
 const resolvers = {
   Query: {
     userProfile: async (_, { username }) => {
@@ -27,6 +30,29 @@ const resolvers = {
         throw error;
       }
     },
+    // this one is the one that works so far showing results. 
+    getVideoGames: async (_, { title }) => {
+      const url= `https://rawg.io/api/games?search=${title}&key=246f9b92ca5c44d7bf1c561cf74089fc`
+      try {
+        const response = await axios.get(url);
+        // response.data.results[0].name
+        let allGames = []
+        for (let i = 0; i < response.data.results.length; i++ ){
+          const game = {
+            title: response.data.results[i].name,
+            released: response.data.results[i].released,
+            platforms : response.data.results[i].platforms,
+            genres: response.data.results[i].genres, 
+          }
+          allGames.push(game)
+        }
+        console.log(response.data);
+        return allGames;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     //need to retool to work w/the api
     game: async (_, { _id }) => {
       try {

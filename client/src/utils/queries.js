@@ -9,7 +9,7 @@ query me {
       username
       email
       bookCount
-      savedBooks {
+      savedGames {
         bookId
         authors
         description
