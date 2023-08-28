@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 // import Login from './components/login'
 import Header from './components/header'
+// import { Outlet } from 'react-router-dom'
 // import './App.css'
 
 // function App() {
@@ -29,6 +30,7 @@ import Header from './components/header'
 
 // export default App
 import './App.css';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -65,13 +67,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
   return (
-    <ApolloProvider client={client}>
-         <Header />
-          <Outlet />
-        {/* <Footer /> */}
-    </ApolloProvider>
+    <div>
+      <Header />
+      <Outlet />
+      {/* <Footer /> */}
+    </div>
   );
 }
 

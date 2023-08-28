@@ -1,4 +1,7 @@
-const typeDefs = `
+//import { gql } from '@apollo/client';
+//const { gql } = require('@apollo/client')
+
+const typeDefs = `#graphql
 type User {
     _id: ID
     username: String
@@ -38,8 +41,21 @@ type Reviews {
 type API_games {
     title: String
     released: String
-    platforms: String
-    genres: String
+    platforms: [Platform]
+    genres: [Genre]
+}
+type Platform {
+    platform: PlatformData
+}
+type PlatformData {
+    id: Int
+    name: String
+    slug: String
+}
+type Genre {
+    id: Int
+    name: String
+    slug: String
 }
 
 type Query {

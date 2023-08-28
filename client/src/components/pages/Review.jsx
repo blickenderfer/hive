@@ -1,5 +1,40 @@
+
 //Add function to take data and add to user's profile on button click!
 //ask for help?
+// import React, { useState } from 'react';
+
+// const ReviewForm = ({ onSubmit }) => {
+//     const [rating, setRating] = useState(0);
+//     const [comment, setComment] = useState ('');
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+
+//         const review = {
+//             rating, 
+//             comment,
+//         };
+
+//         return (
+//             <form onSubmit={handleSubmit}>
+//                 <div>
+//                     <label>Rating:</label>
+//                     <input
+//                     type="number"
+//                     min="1"
+//                     max="5"
+//                     value={rating}
+//                     onChange={(e) => setRating(parseInt(e.target.value))}/>
+//                 </div>
+//                 <button type="submit">Submit Review</button>
+//             </form>
+//         )
+//     }
+// };
+
+// export default ReviewForm;
+
+
 
 export default function Review() {
     return (
@@ -29,3 +64,6 @@ export default function Review() {
         </>
     )
 }
+
+
+

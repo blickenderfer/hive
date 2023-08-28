@@ -1,6 +1,31 @@
 //possibily add a home feed showing reviews?
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@apollo/client';
+import { ALL_GAMES } from '../../utils/queries';
+
 export default function Dashboard() {
+
+    const [search, setSearch] = useState("");
+    const [query, setQuery] = useState("")
+    const { data, loading, error, refetch, fetchMore } = useQuery(ALL_GAMES, {
+        variables: {
+            title: query
+        }
+    });
+
+    const searchHandler = () => {
+        console.log(search);
+        setQuery(search);
+        refetch()
+
+
+    }
+
+
+    
+
+
     return (
         <>
             {/* <div class="input-field col s12">
@@ -32,12 +57,26 @@ export default function Dashboard() {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat expedita labore quas, iusto corporis libero harum eveniet beatae consectetur neque illum et aliquid sit? Repellat unde possimus, sapiente quod id officia iusto ad alias ea, mollitia veritatis natus illum fugiat.
                 </div>
 
+                {/* will need a Games, Reviews, Friends page to match up with the links above. games page will be the games added to collection, Reviews will be a list of games you and/or your friends have reviewed, Friends is a list of users that are your "friends".  Change the h3 with Welcome, Username to Welcome {user.userName}  In the games page need each card to contain a button to add a review and a maybe a dropdown to show all reviews on the games.  Reviews will need to have cards with the game title and then associated reviews and a textbox to add review, and users should be able to delete their own review.  friends page should be a card for each friend, render user map function.  include delete friend button and maybe just a count of how many games they have added and how many reviews they have left */}
+
                 <div className="col s9 game-search-section">
                     <div class="input-field col s6">
 
-                        <input placeholder="Search Games" id="game-search" type="text" class="validate"/>
-                           
+                        <input placeholder="Search Games" id="game-search" type="text" class="validate" onChange={(e => setSearch(e.target.value))} />
+                        <button onClick={searchHandler}>Search Games</button>
+
                     </div>
+
+
+
+                </div>
+                <div>
+                    {
+                        data != undefined && query != "" && data.getVideoGames.map(d => {
+                            return <div>{d.title}</div>
+                        }
+                        )
+                    }
 
                 </div>
 

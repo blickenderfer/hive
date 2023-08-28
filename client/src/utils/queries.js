@@ -20,3 +20,13 @@ query me {
     }
   }
 `
+
+
+
+export const ALL_GAMES = gql`
+query getVideoGames($title: String) {
+  getVideoGames(title: $title) {
+    title
+  }
+}
+`

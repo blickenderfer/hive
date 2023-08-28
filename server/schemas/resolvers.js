@@ -2,7 +2,7 @@
 // const { Profile } = require('../models/Profile');
 //api key 68eb0690763d46b0b8c318062068f9bb
 const { Profile, Game, Trophy, Review } = require('../models');
-const { signToken, AuthenticationError} = require('../utils/auth');
+const { signToken, AuthenticationError } = require('../utils/auth');
 const axios = require('axios');
 require('dotenv').config()
 
@@ -19,7 +19,10 @@ require('dotenv').config()
 
 const resolvers = {
   Query: {
-    userProfile: async (_, { username }) => {
+    userProfile: async (_, { username, password }) => {
+
+      //cross reference password and fail if it doesn't match
+
       try {
         const user = await User.findOne({ username })
           .populate('games')
@@ -32,21 +35,23 @@ const resolvers = {
     },
     // this one is the one that works so far showing results. 
     getVideoGames: async (_, { title }) => {
-      const url= `https://rawg.io/api/games?search=${title}&key=246f9b92ca5c44d7bf1c561cf74089fc`
+      const url = `https://rawg.io/api/games?search=${title}&key=246f9b92ca5c44d7bf1c561cf74089fc`
       try {
         const response = await axios.get(url);
         // response.data.results[0].name
         let allGames = []
-        for (let i = 0; i < response.data.results.length; i++ ){
+        for (let i = 0; i < response.data.results.length; i++) {
           const game = {
             title: response.data.results[i].name,
             released: response.data.results[i].released,
-            platforms : response.data.results[i].platforms,
-            genres: response.data.results[i].genres, 
+            platforms: response.data.results[i].platforms,
+            genres: response.data.results[i].genres,
           }
+          console.log(response.data.results[i])
           allGames.push(game)
         }
         console.log(response.data);
+        console.log(JSON.stringify(allGames, null, 2));
         return allGames;
       } catch (error) {
         console.error(error);
@@ -63,23 +68,23 @@ const resolvers = {
       }
     },
   },
-//  game search w/api ver. 0.5
-//  testing w/the api key to search for a game using a search bar function added in the front end. 
+  //  game search w/api ver. 0.5
+  //  testing w/the api key to search for a game using a search bar function added in the front end. 
 
 
-//  game: async (_, { _id }) => {
-//  try {
-//        const response = await axios.request(apiOptions);
-//          console.log(response.data);
-//} catch (error) {
-//  console.log(error);
-//}
-//}
+  //  game: async (_, { _id }) => {
+  //  try {
+  //        const response = await axios.request(apiOptions);
+  //          console.log(response.data);
+  //} catch (error) {
+  //  console.log(error);
+  //}
+  //}
 
 
   Mutation: {
-    addUser: async (parent, {username, email, password}) => {
-      const newUser = await Profile.create({username, email, password})
+    addUser: async (parent, { username, email, password }) => {
+      const newUser = await Profile.create({ username, email, password })
       const token = signToken(newUser);
       return { token, newUser };
 
@@ -92,27 +97,30 @@ const resolvers = {
     }, */
     // Checks username and password validation. 
     login: async (parent, { email, password }) => {
-      console.log({email, password})
-      const user = await Profile.findOne({ email });
-      if (!user) {
+      console.log({ email, password })
+      const profile = await Profile.findOne({ email: email });
+      console.log(1, profile)
+      if (!profile) {
         throw AuthenticationError;
       }
 
       // const correctPassword = user.verifyPassword(password);
-      
+
       // if (!correctPassword) {
       //   throw new Error('Incorrect password');
       // }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await profile.isCorrectPassword(password);
 
-       if (!correctPw) {
+      if (!correctPw) {
         throw Error;
       }
 
-      const token = signToken(user);
-      console.log({ token, user })
-      return { token, user };
+      console.log(2)
+
+      const token = await signToken(profile);
+      console.log({ token, profile })
+      return { token, user: profile };
     },
   },
 };
