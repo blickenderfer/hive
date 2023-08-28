@@ -1,43 +1,48 @@
 // import { useState } from 'react'
 // import Login from './components/login'
 import Header from './components/header'
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
 import { Outlet } from 'react-router-dom'
-// import './App.css'
+import { setContext } from '@apollo/client/link/context';
+import './App.css'
 
-// function App() {
-//   const [currentPage, setCurrentPage] = useState('Login');
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
-//   const renderPage = () => {
-//     if (currentPage === 'Login') {
-//       return <Login />;
-//     }
-//     if (currentPage === 'Dashboard') {
-//       return <Dashboard />;
-//     }
-//   };
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  console.log("did i get token", token)
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      mode: "no-cors",
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
-//   const handlePageChange = (page) => setCurrentPage(page);
-
-//   return (
-//     <>
-//       <Header handlePageChange={handlePageChange}></Header>
-//       <main>
-//         {renderPage()}
-//       </main>
-//     </>
-//   )
-// }
-
-// export default App
-import './App.css';
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  //uri: 'http://127.0.0.1:3001/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <div>
+    <ApolloProvider client={client}>
       <Header />
       <Outlet />
       {/* <Footer /> */}
-    </div>
+    </ApolloProvider>
   );
 }
 
