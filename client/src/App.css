@@ -1,3 +1,19 @@
+:root {
+  --neon-bg-color:       0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 21px #fff,
+  0 0 42px #0fa,
+  0 0 82px #0fa,
+  0 0 92px #0fa,
+  0 0 102px #0fa,
+  0 0 151px #0fa;
+
+}
+ 
+a {
+  color: white;
+}
+
 .logPgs {
   max-width: 1280px;
   margin: 0 auto;
@@ -29,17 +45,7 @@
 .title {
   font-style: italic;
   color: #fff;
-  text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
-
-
+  text-shadow: var(--neon-bg-color);
 }
 
 .game-search-section {
@@ -61,3 +67,29 @@
   margin-top: 5px;
   margin-bottom: 0;
 }
+
+.infotext {
+  font-size: 1.8em;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.toppad {
+  margin-top: 5em;
+}
+
+.botpad {
+  margin-bottom: 2em;
+}
+
+.pleft {
+  padding-left: .3em;
+}
+
+.testbg {
+  height: 40vh;
+  /* background-color: blue; */
+  /* box-shadow: 1px 1px 30px var(--neon-bg-color); */
+}
+
+/*If possible set the boxshadows of the info sections on homepage to have the neon? Or the border? I messed with the css and couldn't get it to work w/a variable, might need to be hard coded...*/
