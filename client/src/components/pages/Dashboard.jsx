@@ -1,6 +1,28 @@
 //possibily add a home feed showing reviews?
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@apollo/client';
+import { ALL_GAMES } from '../../utils/queries';
+
 export default function Dashboard() {
+
+    const [search, setSearch] = useState("");
+    const [query, setQuery] = useState("")
+    const { data, loading, error, refetch, fetchMore } = useQuery(ALL_GAMES, {
+        variables: {
+            title: query
+        }
+    });
+
+    const searchHandler = () => {
+        console.log(search);
+        setQuery(search);
+        refetch()
+
+
+    }
+
+
     return (
         <>
             {/* <div class="input-field col s12">
@@ -35,9 +57,21 @@ export default function Dashboard() {
                 <div className="col s9 game-search-section">
                     <div class="input-field col s6">
 
-                        <input placeholder="Search Games" id="game-search" type="text" class="validate"/>
-                           
+                        <input placeholder="Search Games" id="game-search" type="text" class="validate" onChange={(e => setSearch(e.target.value))} />
+                        <button onClick={searchHandler}>Search Games</button>
+
                     </div>
+
+
+
+                </div>
+                <div>
+                    {
+                        data != undefined && query != "" && data.getVideoGames.map(d => {
+                            return <div>{d.title}</div>
+                        }
+                        )
+                    }
 
                 </div>
 

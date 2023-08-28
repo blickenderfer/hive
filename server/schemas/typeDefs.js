@@ -1,6 +1,7 @@
-import { gql } from '@apollo/client';
+//import { gql } from '@apollo/client';
+//const { gql } = require('@apollo/client')
 
-const typeDefs = gql`
+const typeDefs = `#graphql
 type User {
     _id: ID
     username: String
