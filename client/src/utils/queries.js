@@ -27,6 +27,16 @@ export const ALL_GAMES = gql`
 query getVideoGames($title: String) {
   getVideoGames(title: $title) {
     title
+    released
+    platforms {
+      platform{
+        name
+      }
+    }
+    genres {
+      name
+    }
+    image_background
   }
 }
 `
