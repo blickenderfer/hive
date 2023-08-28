@@ -19,6 +19,7 @@ import Signup from './components/pages/Signup';
 import Login from './components/pages/Login.jsx';
 import Dashboard from './components/pages/Dashboard.jsx';
 import Home from './components/pages/Homepage';
+import Review from './components/pages/Review.jsx';
 // import ErrorPage from './pages/Error';
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
        {
         path: '/dashboard',
         element: <Dashboard />
+      },
+       {
+        path: '/review',
+        element: <Review />
       }
       //   path: '/profiles/:profileId',
       //   element: <Profile />
