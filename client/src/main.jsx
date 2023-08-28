@@ -13,7 +13,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
-// import Home from './pages/Home';
+import Home from './components/pages/Homepage.jsx';
+import Review from './components/pages/Review.jsx';
 // import Profile from './pages/Profile';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login.jsx';
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Dashboard />
+      },
+       {
+        path: '/review',
+        element: <Review />
       }
       //   path: '/profiles/:profileId',
       //   element: <Profile />
