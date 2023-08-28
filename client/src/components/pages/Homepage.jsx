@@ -10,25 +10,27 @@ export default function Homepage() {
                         <div className='col s12'><h1 className='center-align title'>Welcome to Hive!</h1></div>
                     </div>
                     <div className='row'>
-                        <div className='col s12'><h5 className='center-align title'>Your one stop shop for game reviews and guides</h5></div>
+                        <div className='col s12 botpad'><h5 className='center-align white-text'>Your one stop shop for game reviews and guides</h5></div>
                     </div>
                 </div>
                 <div className='section'>
                     <div className='row'>
                         <div className='col s12'>
-                            <h5 className='title center-align'>New to Hive? Here's a quick guide</h5>
+                            <h3 className='title center-align'>New to Hive? Here's a quick guide</h3>
                         </div>
-                        <div className='col s4 test center-align'>
+                        <div className='section'>
+                        <div className='col s2 offset-s3 test center-align toppad testbg'>
                             <h6 className='homepageST title'>A place for gamers</h6>
-                            <p className='white-text'>Hive is a spot where gamers are welcomed to come and share their ideas & opinions about the games we love!</p>
+                            <p className='white-text infotext'>Hive is a spot where gamers are welcomed to come and share their ideas & opinions about the games we love!</p>
                         </div>
-                        <div className='col s4 center-align'>
+                        <div className='col s2 center-align toppad testbg'>
                             <h6 className='homepageST title'>A place for community</h6>
-                            <p className='white-text'>Once you create an account, you can add friends, select your favourite games, and let the world hear your piece!</p>
+                            <p className='white-text infotext'>Once you create an account, you can add friends, select your favourite games, and let the world hear your piece!</p>
                         </div>
-                        <div className='col s4 center-align'>
+                        <div className='col s2 center-align toppad testbg'>
                             <h6 className='homepageST title'>A place for you!</h6>
-                            <p className='white-text'>So <a><Link to="/login">login here</Link></a> or up top, and get your game on!</p>
+                            <p className='white-text infotext'>So <a><Link to="/login">login here</Link></a> or up top, and get your game on!</p>
+                        </div>
                         </div>
                     </div>
                 </div>
