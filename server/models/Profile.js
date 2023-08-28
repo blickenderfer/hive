@@ -1,18 +1,18 @@
 //complete games and review models before finishing this
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 
-const profileSchema = new Schema ({
+const profileSchema = new Schema({
     username: {
         type: String,
         required: true,
         unique: true,
         trim: true,
-    }, 
+    },
     email: {
         type: String,
-        required: true, 
+        required: true,
         unique: true,
         match: [/.+@.+\..+/, 'Must match an email address!'],
     },
@@ -37,33 +37,23 @@ const profileSchema = new Schema ({
 })
 // set up pre-save middleware to create password
 profileSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
 
-  next();
+    next();
 });
 
 // compare the incoming password with the hashed password
 profileSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
-};
-
-//password middleware
-profileSchema.pre('save', async function (next) {
-    if (this.isNew || this.isModified('password')) {
-        const preSave = 10;
-        this.password = await bcrypt.hash(this.password, preSave);
-    }
-
-next();
-});
-
-//password comparison
-profileSchema.methods.isRightPass = async function (password){
+    console.log("checking", password, this.password)
     return bcrypt.compare(password, this.password);
 };
+
+
+
+
 
 const Profile = model('Profile', profileSchema);
 

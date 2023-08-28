@@ -23,7 +23,7 @@ class AuthService {
     console.log(idToken)
     // Saves user token to localStorage and reloads the application for logged in status to take effect
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/dashboard');
+    //window.location.assign('/dashboard');
   }
 
   logout() {

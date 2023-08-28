@@ -21,26 +21,12 @@ query me {
   }
 `
 
+
+
 export const ALL_GAMES = gql`
-query ExampleQuery($title: String) {
-  userProfile {
-    _id
-  }
+query getVideoGames($title: String) {
   getVideoGames(title: $title) {
-    released
     title
-    platforms {
-      platform {
-        id
-        name
-        slug
-      }
-    }
-    genres {
-      id
-      name
-      slug
-    }
   }
 }
 `
