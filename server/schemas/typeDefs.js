@@ -43,7 +43,9 @@ type API_games {
     released: String
     platforms: [Platform]
     genres: [Genre]
+    image_background: String
 }
+
 type Platform {
     platform: PlatformData
 }
