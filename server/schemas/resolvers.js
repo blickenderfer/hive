@@ -24,9 +24,9 @@ const resolvers = {
       //cross reference password and fail if it doesn't match
 
       try {
-        const user = await User.findOne({ username })
+        const user = await Profile.findOne({ username })
           .populate('games')
-          .populate('trophies')
+          // .populate('trophies')
           .populate('reviews.game');
         return user;
       } catch (error) {
@@ -70,21 +70,19 @@ const resolvers = {
       }
     },
   },
-  //  game search w/api ver. 0.5
-  //  testing w/the api key to search for a game using a search bar function added in the front end. 
-
-
-  //  game: async (_, { _id }) => {
-  //  try {
-  //        const response = await axios.request(apiOptions);
-  //          console.log(response.data);
-  //} catch (error) {
-  //  console.log(error);
-  //}
-  //}
-
 
   Mutation: {
+
+    saveGame: async (parent, { gameId, title, released, genre, platforms }, context) => {
+      console.log(context);
+      console.log(gameId);
+      const result = await Profile.findByIdAndUpdate(context.user._id, {["$push"]: {games: {gameId, title, released, genre, platforms}}});
+      const gameSaver = await Profile.findById(context.user._id);
+      return gameSaver
+    },
+
+  
+
     addUser: async (parent, { username, email, password }) => {
       const newUser = await Profile.create({ username, email, password })
       const token = signToken(newUser);
@@ -94,6 +92,7 @@ const resolvers = {
     // Update a user's profile information
     /*
     updateProfile: async (parent, { input }, { dataSources }) => {
+
       const updatedProfile = await dataSources.profileAPI.updateProfile(input);
       return updatedProfile;
     }, */

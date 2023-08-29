@@ -1,7 +1,7 @@
 
 //Add function to take data and add to user's profile on button click!
 //ask for help?
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 // const ReviewForm = ({ onSubmit }) => {
 //     const [rating, setRating] = useState(0);
@@ -33,9 +33,6 @@
 // };
 
 // export default ReviewForm;
-
-
-
 export default function Review() {
     return (
         <>
