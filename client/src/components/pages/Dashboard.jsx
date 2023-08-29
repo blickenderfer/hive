@@ -76,10 +76,12 @@ export default function Dashboard() {
                                 <div className="card blue-grey darken-1">
                                     <div className="card-content white-text">
                                         <span className="card-title">{game.title}</span>
+                                        <span className="card-title">{game.released}</span>
                                         <span className='card-title'>{game.id}</span>
                                         <button className='addgamebtn' id="savebtn" onClick={(e) => {
                                             savegame(game.id)
                                         }}>Save to favourites</button>
+
                                     </div>
                                 </div>
                             </div>
