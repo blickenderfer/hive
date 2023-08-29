@@ -11,7 +11,7 @@ const Profile = () => {
     const { loading, data } = useQuery(
         profileId ? QUERY_SINGLE_PROFILE : QUERY_ME,
             {
-                variables: { profileId: profileId},
+                variables: { profileId: profileId },
             }
     );
 
@@ -36,7 +36,7 @@ const Profile = () => {
     }
 
     return (
-        <div></div>
+        <div>//need to add the display of saved games on profiles</div>
     )
      
     function addedGames(){
@@ -46,6 +46,10 @@ const Profile = () => {
         }
     };
     
+    
+
+
+
 }
 
 export default Profile;

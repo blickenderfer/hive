@@ -70,6 +70,7 @@ export default function Dashboard() {
 
 
                 </div>
+                {/* this code put the results into cards  */}
                 <div className="col s9">
                 {data !== undefined && query !== '' && (
                     <div className="row">
@@ -78,6 +79,9 @@ export default function Dashboard() {
                                 <div className="card blue-grey darken-1">
                                     <div className="card-content white-text">
                                         <span className="card-title">{game.title}</span>
+                                        <span className="card-title">{game.release}</span>
+                                        <span className="card-title">{game.genre}</span>
+                                        <span className="card-title">{game.background_image}</span>
                                     </div>
                                 </div>
                             </div>
