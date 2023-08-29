@@ -1,6 +1,7 @@
 //complete games and review models before finishing this
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const gameSchema = require('./Game');
 
 
 const profileSchema = new Schema({
@@ -21,13 +22,13 @@ const profileSchema = new Schema({
         required: true,
         minlength: 5,
     },
-    // games: [gameSchema],
-    // reviews: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'Review'
-    //     }
-    // ],
+    games: [gameSchema],
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review'
+        }
+    ],
     // friends: [
     //     {
     //         type: Schema.Types.ObjectId,

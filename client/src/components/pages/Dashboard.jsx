@@ -1,10 +1,13 @@
 //possibily add a home feed showing reviews?
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { ALL_GAMES } from '../../utils/queries';
+import { SAVE_GAME } from '../../utils/mutations';
 
 export default function Dashboard() {
+
+    const [saveGame, { error:saveError }] = useMutation(SAVE_GAME);
 
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("")
@@ -23,7 +26,9 @@ export default function Dashboard() {
     }
 
 
-    
+    const savegame = (gameId) => {
+
+    };
 
 
     return (
@@ -71,6 +76,10 @@ export default function Dashboard() {
                                 <div className="card blue-grey darken-1">
                                     <div className="card-content white-text">
                                         <span className="card-title">{game.title}</span>
+                                        <span className='card-title'>{game.id}</span>
+                                        <button className='addgamebtn' id="savebtn" onClick={(e) => {
+                                            savegame(game.id)
+                                        }}>Save to favourites</button>
                                     </div>
                                 </div>
                             </div>
