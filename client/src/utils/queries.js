@@ -40,3 +40,8 @@ query getVideoGames($title: String) {
   }
 }
 `
+
+// export const ADD_REVIEW = gql`
+// mutation writeReview($reviewData: ReviewInput!) {
+
+// }`

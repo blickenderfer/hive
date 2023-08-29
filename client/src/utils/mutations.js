@@ -25,3 +25,21 @@ mutation addUser($email: String!, $username: String!, $password: String!) {
   }
 }
 `
+
+// export const SAVE_GAME = gql `
+// mutation saveGame($game: ID!){
+//   saveGame(game: $ID) {
+
+//   }
+// }
+// `
+
+
+
+// export const ADD_REVIEW = gql`
+// mutation writeReview($username:String!, $game: ID!, $body: String!) {
+//   writeReview(username: $username, game: $ID, body: $body) {
+
+//   }
+// }
+// `

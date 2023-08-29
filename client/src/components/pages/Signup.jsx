@@ -50,21 +50,25 @@ const Signup = function () {
               <div className="row">
                 <form className="col s12" onSubmit={handleFormSubmit}>
                   <div className="row">
+
                     <div className="input-field col s12">
                       <input id="email" type="email" name="email" value={formState.email} className="validate" onChange={handleChange} />
                       <label for="email">Email</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
+
                     <div className="input-field col s12">
                       <input id="username" type="username" name="username" value={formState.username} onChange={handleChange} />
                       <label for="username">Username</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
+
                     <div className="input-field col s12">
                       <input id="password" type="password" name="password" value={formState.password} className="validate" onChange={handleChange} />
                       <label for="password">Password</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
+                    
                   </div>
                   <button type="submit">Log In</button>
                 </form>
