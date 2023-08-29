@@ -64,12 +64,12 @@ const Login = function (props) {
                   <div className="row">
                     <div className="input-field col s12">
                       <input id="email" type="email" className="validate" value={formState.email} name="email" onChange={handleChange} />
-                      <label className="white-text"for="email">Email</label>
+                      <label className="white-text" for="email">Email</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                     <div className="input-field col s12">
                       <input id="password" type="password" className="validate" value={formState.password} name="password" onChange={handleChange} />
-                      <label className="white-text"for="password">Password</label>
+                      <label className="white-text" for="password">Password</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
@@ -80,9 +80,9 @@ const Login = function (props) {
             <div className="signup-login-links">
               <p className="white-text">New User?</p>
               <div className="signup-link">
-              <Link to="/signup"className="yellow-text signup-link">Sign Up Here</Link>
+                <Link to="/signup" className="yellow-text signup-link">Sign Up Here</Link>
               </div>
-              </div>  
+            </div>
           </div>
         </div>
 
