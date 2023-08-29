@@ -78,6 +78,7 @@ export default function Dashboard() {
                                 <div className="card blue-grey darken-1">
                                     <div className="card-content white-text">
                                         <span className="card-title">{game.title}</span>
+                                        <span className="card-title">{game.released}</span>
                                     </div>
                                 </div>
                             </div>

@@ -42,6 +42,7 @@ const resolvers = {
         let allGames = []
         for (let i = 0; i < response.data.results.length; i++) {
           const game = {
+            id: response.data.results[i].id,
             title: response.data.results[i].name,
             released: response.data.results[i].released,
             platforms: response.data.results[i].platforms,

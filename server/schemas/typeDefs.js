@@ -39,6 +39,7 @@ type Reviews {
 
 
 type API_games {
+    id: ID
     title: String
     released: String
     platforms: [Platform]
