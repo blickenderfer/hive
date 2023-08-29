@@ -26,13 +26,20 @@ mutation addUser($email: String!, $username: String!, $password: String!) {
 }
 `
 
-// export const SAVE_GAME = gql `
-// mutation saveGame($game: ID!){
-//   saveGame(game: $ID) {
-
-//   }
-// }
-// `
+export const SAVE_GAME = gql `
+mutation Mutation($gameId: String!, $title: String, $released: String, $genre: String, $platforms: String) {
+  saveGame(gameId: $gameId, title: $title, released: $released, genre: $genre, platforms: $platforms) {
+    games {
+      gameId
+      genre
+      platforms
+      released
+      title
+    }
+    email
+  }
+}
+`
 
 
 

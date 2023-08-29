@@ -1,18 +1,23 @@
-// //when searching a game show reviews? mayb??
 const { Schema } = require('mongoose');
 
 const gameSchema = new Schema({
-    title: {
+    gameId: {
         type: String,
         required: true,
     },
-
-    developers: {
+    title: {
         type: String,
-        required: true,
+        required: false,
+    },
+    released: {
+        type: String,
+        required: false,
     },
     genre: {
         type: String,
+    },
+    platforms: {
+      type: String,  
     }
 });
 
