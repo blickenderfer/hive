@@ -1,15 +1,20 @@
-// const { Schema, model } = require('mongoose');
-// const gameSchema = require('./Game');
+const { Schema, model } = require('mongoose');
+const gameSchema = require('./Game');
 
-// const reviewSchema = new Schema({
-//     body: {
-//         type: String,
-//         required: true,
-//     },
-//     game: gameSchema,
-// });
+const reviewSchema = new Schema({
+    reviewId: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true,
+    },
+    game: gameSchema,
+});
 
-// const Review = model('Review', reviewSchema);
+const Review = model('Review', reviewSchema);
+
 
 // module.exports = Review
 
@@ -48,3 +53,4 @@ const ReviewForm = ({ onSubmit }) => {
 };
 
 export default ReviewForm;
+

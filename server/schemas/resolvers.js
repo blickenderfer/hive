@@ -24,9 +24,9 @@ const resolvers = {
       //cross reference password and fail if it doesn't match
 
       try {
-        const user = await User.findOne({ username })
+        const user = await Profile.findOne({ username })
           .populate('games')
-          .populate('trophies')
+          // .populate('trophies')
           .populate('reviews.game');
         return user;
       } catch (error) {
@@ -42,6 +42,7 @@ const resolvers = {
         let allGames = []
         for (let i = 0; i < response.data.results.length; i++) {
           const game = {
+            id: response.data.results[i].id,
             title: response.data.results[i].name,
             released: response.data.results[i].released,
             platforms: response.data.results[i].platforms,
@@ -69,19 +70,6 @@ const resolvers = {
       }
     },
   },
-  //  game search w/api ver. 0.5
-  //  testing w/the api key to search for a game using a search bar function added in the front end. 
-
-
-  //  game: async (_, { _id }) => {
-  //  try {
-  //        const response = await axios.request(apiOptions);
-  //          console.log(response.data);
-  //} catch (error) {
-  //  console.log(error);
-  //}
-  //}
-
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
