@@ -46,6 +46,7 @@ const resolvers = {
             released: response.data.results[i].released,
             platforms: response.data.results[i].platforms,
             genres: response.data.results[i].genres,
+            image_background: response.data.results[i].image_background
           }
           console.log(response.data.results[i])
           allGames.push(game)

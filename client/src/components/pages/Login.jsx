@@ -89,8 +89,6 @@ const Login = function (props) {
       </div>
     </div>
   )
-
-
 }
 
 export default Login
