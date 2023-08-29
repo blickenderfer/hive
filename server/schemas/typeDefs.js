@@ -18,10 +18,11 @@ type Auth {
 }
 
 type Game {
-    _id: ID
-    name: String
-    developers: String
-    genres: String
+    gameId: ID
+    title: String
+    released: String
+    genre: String
+    platforms: String
 }
 
 type Trophy {
@@ -71,7 +72,7 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addGame(username: String!, game: ID!): User
-    saveGame(game: ID!): User
+    saveGame(gameId: String!, title: String, released: String, genre: String, platforms: String): User
     addTrophy(username: String!, trophy: ID!): User
     writeReview(username: String!, game: ID!, body: String!): Reviews
     addFriend(username: String!, friendUsername: String!): User
