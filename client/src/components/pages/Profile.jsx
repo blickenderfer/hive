@@ -1,5 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import React, { useState } from 'react';
 
 import { QUERY_SINGLE_PROFILE, QUERY_ME } from '../../utils/auth';
 import Auth from '../../utils/auth'
@@ -38,4 +39,13 @@ const Profile = () => {
         <div></div>
     )
      
+    function addedGames(){
+        const [favorites, setFavorites] = useState([]);
+        const addToFaves = (item) => {
+            setFavorites([...favorites, item]);
+        }
+    };
+    
 }
+
+export default Profile;
