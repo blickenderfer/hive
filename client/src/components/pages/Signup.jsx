@@ -44,39 +44,41 @@ const Signup = function () {
     <div className='flex-column justify-flex-start min-100-vh logPgs'>
       <div className="row login-card">
         <div>
-          <div className="card #4db6ac teal lighten-2 loginsignup">
-            <div className="card-content white-text">
-              <span className="login-signup-title">Sign Up</span>
+          <div className="card loginsignup">
+            <div className="card-content black-text loginsignup-content">
+              <span className="title login-signup-title">Sign Up</span>
               <div className="row">
                 <form className="col s12" onSubmit={handleFormSubmit}>
                   <div className="row">
 
                     <div className="input-field col s12">
                       <input id="email" type="email" name="email" value={formState.email} className="validate" onChange={handleChange} />
-                      <label for="email">Email</label>
+                      <label for="email" className="white-text">Email</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
 
                     <div className="input-field col s12">
-                      <input id="username" type="username" name="username" value={formState.username} onChange={handleChange} />
-                      <label for="username">Username</label>
+                      <input id="username"name="username" value={formState.username} className="validate" onChange={handleChange} />
+                      <label for="username" className="white-text">Username</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
 
                     <div className="input-field col s12">
                       <input id="password" type="password" name="password" value={formState.password} className="validate" onChange={handleChange} />
-                      <label for="password">Password</label>
+                      <label for="password" className="white-text">Password</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
-                    
+
                   </div>
-                  <button type="submit">Log In</button>
+                  <button type="submit"className="login-signup-button white-text">Log In</button>
                 </form>
               </div>
             </div>
-            <div className="card-action">
-              <p>Already have an account?</p>
-              <Link to="/login">Log In</Link>
+            <div className="signup-login-links">
+              <p className="white-text">Already have an account?</p>
+              <div className="signup-link">
+                <Link to="/login" className="yellow-text signup-link">Log In</Link>
+              </div>
             </div>
           </div>
         </div>
