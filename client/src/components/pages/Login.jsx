@@ -53,41 +53,42 @@ const Login = function (props) {
 
 
   return (
-    <div className='flex-column justify-flex-start min-100-vh logPgs'>
+    <div className='flex-column justify-flex-start min-100-vh logPgs yikes'>
       <div className="row login-card">
         <div>
-          <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
-              <span className="card-title">Log In</span>
+          <div className="card loginsignup">
+            <div className="card-content black-text loginsignup-content">
+              <span className="title login-signup-title">Log In</span>
               <div className="row">
                 <form className="col s12" onSubmit={handleFormSubmit}>
                   <div className="row">
                     <div className="input-field col s12">
                       <input id="email" type="email" className="validate" value={formState.email} name="email" onChange={handleChange} />
-                      <label for="email">Email</label>
+                      <label className="white-text"for="email">Email</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                     <div className="input-field col s12">
                       <input id="password" type="password" className="validate" value={formState.password} name="password" onChange={handleChange} />
-                      <label for="password">Password</label>
+                      <label className="white-text"for="password">Password</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
                   </div>
-                  <button type="submit">Log In</button>
+                  <button type="submit" className="login-signup-button white-text">Log In</button>
                 </form>
               </div>
             </div>
-            <div className="card-action">
-              <p>New User?</p>
-              <Link to="/signup">Sign Up</Link>
-            </div>
+            <div className="signup-login-links">
+              <p className="white-text">New User?</p>
+              <div className="signup-link">
+              <Link to="/signup"className="yellow-text signup-link">Sign Up Here</Link>
+              </div>
+              </div>  
           </div>
         </div>
 
       </div>
     </div>
   )
-)
 
 
 }
