@@ -44,9 +44,9 @@ const Signup = function () {
     <div className='flex-column justify-flex-start min-100-vh logPgs'>
       <div className="row login-card">
         <div>
-          <div className="card  blue-grey darken-1">
+          <div className="card #4db6ac teal lighten-2 loginsignup">
             <div className="card-content white-text">
-              <span className="card-title">Sign Up</span>
+              <span className="login-signup-title">Sign Up</span>
               <div className="row">
                 <form className="col s12" onSubmit={handleFormSubmit}>
                   <div className="row">
