@@ -1,13 +1,42 @@
-//possibily add a home feed showing reviews?
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client';
 import { ALL_GAMES } from '../../utils/queries';
 import { SAVE_GAME } from '../../utils/mutations';
+import Auth  from '../../utils/auth';
+import { getSavedGameIds, saveGameIds } from '../../utils/gameSave';
 
 export default function Dashboard() {
 
+const searchedGames = () => {
+    const [ searchedGames, setSearchedGames ] = useState([]) 
+
+    const [ searchInput, setSearchInput ] = useState('');
+
     const [saveGame, { error:saveError }] = useMutation(SAVE_GAME);
+
+    useEffect(() => {
+        return () => saveGameIds(savedGameIds)
+    })
+}
+
+    const handleSaveGame = async (gameId) => {
+        const gameToSave = searchedGames.find((game) => game.gameId === gameId);
+        const token = Auth.loggedin() ? Auth.getToken : null;
+        if (!token) {
+            return false;
+        }
+        try {
+            const { data } = await saveGame({
+                variables: {gameData: {...gameToSave} },
+            });
+            console.log(gameToSave);
+            setSavedGameIds([...saveGame, gameToSave.gameId]);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
 
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("")
@@ -24,12 +53,6 @@ export default function Dashboard() {
 
 
     }
-
-
-    const savegame = (gameId) => {
-
-    };
-
 
     return (
         <>
@@ -60,8 +83,8 @@ export default function Dashboard() {
                 <div className="col s9 game-search-section">
                     <div className="input-field col s6">
 
-                        <input placeholder="Find Games" id="game-search" type="text" class="validate" onChange={(e => setSearch(e.target.value))} />
-                        <button onClick={searchHandler}>Search</button>
+                        <input placeholder="Find Games" id="game-search" type="text" className="validate white-text" onChange={(e => setSearch(e.target.value))} />
+                        <button  className="search-button"onClick={searchHandler}>Search</button>
 
                     </div>
 
@@ -74,12 +97,13 @@ export default function Dashboard() {
                     <div className="row">
                         {data.getVideoGames.map(game => (
                             <div key={game.id} className="col s12 m6">
-                                <div className="card blue-grey darken-1">
+                                <div className="card blue-grey darken-1 game-card">
                                     <div className="card-content white-text">
-                                        <span className="card-title">{game.title}</span>
-                                        <span className='card-title'>{game.id}</span>
+                                        <span className="card-title game-name">{game.title}</span>
+                                        <span className="card-title release-date">Released {game.released}</span>
+                                        <span className='card-title game-id'>{game.id}</span>
                                         <button className='addgamebtn' id="savebtn" onClick={(e) => {
-                                            savegame(game.id)
+                                            handleSaveGame(game.id)
                                         }}>Save to favourites</button>
                                     </div>
                                 </div>

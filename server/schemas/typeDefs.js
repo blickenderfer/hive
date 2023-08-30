@@ -3,7 +3,7 @@
 
 const typeDefs = `#graphql
 type User {
-    _id: ID
+    _id: String
     username: String
     email: String
     games: [Game]
@@ -18,7 +18,7 @@ type Auth {
 }
 
 type Game {
-    gameId: ID
+    gameId: ID!
     title: String
     released: String
     genre: String
@@ -33,14 +33,15 @@ type Trophy {
 }
 
 type Reviews {
-    _id: ID
+    reviewId: ID
     body: String
     game: Game
 }
 
 
 type API_games {
-    id: String
+
+    id: ID
     title: String
     released: String
     platforms: [Platform]
@@ -68,13 +69,25 @@ type Query {
     getVideoGames(title: String): [API_games]
 }
 
+input gameInput {
+    gameId: ID!
+    title: String
+    released: String
+    genre: String
+    platforms: String
+} 
+
+
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addGame(username: String!, game: ID!): User
-    saveGame(gameId: String!, title: String, released: String, genre: String, platforms: String): User
+    # addGame and saveGame do the same thing?
+    # addGame(username: String!, game: ID!): User
+    saveGame(gameData: gameInput! ): User
+    deleteGame(gameId: String!, title: String, released: String, genre: String, platforms: String): User
     addTrophy(username: String!, trophy: ID!): User
-    writeReview(username: String!, game: ID!, body: String!): Reviews
+    addReview(reviewId: String!, game: ID!, body: String!): Reviews
+    # also going to need a delete review mutation
     addFriend(username: String!, friendUsername: String!): User
   }
 `

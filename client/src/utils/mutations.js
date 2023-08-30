@@ -27,8 +27,11 @@ mutation addUser($email: String!, $username: String!, $password: String!) {
 `
 
 export const SAVE_GAME = gql `
-mutation Mutation($gameId: String!, $title: String, $released: String, $genre: String, $platforms: String) {
-  saveGame(gameId: $gameId, title: $title, released: $released, genre: $genre, platforms: $platforms) {
+mutation saveGame($gameData: gameInput!) {
+  saveGame(gameData: $gameData) {
+    _id
+    username
+    email 
     games {
       gameId
       genre
@@ -36,7 +39,20 @@ mutation Mutation($gameId: String!, $title: String, $released: String, $genre: S
       released
       title
     }
-    email
+  }
+}
+`
+
+export const DELETE_GAME = gql`
+mutation DeleteGame($gameId: String!) {
+  deleteGame(gameId: $gameId) {
+    games {
+      gameId
+      genre
+      platforms
+      released
+      title
+    }
   }
 }
 `

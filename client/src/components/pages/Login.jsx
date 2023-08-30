@@ -63,7 +63,7 @@ const Login = function (props) {
                 <form className="col s12" onSubmit={handleFormSubmit}>
                   <div className="row">
                     <div className="input-field col s12">
-                      <input id="email" type="email" className="validate" value={formState.email} name="email" onChange={handleChange} />
+                      <input id="email" type="email" className="validate white-text" value={formState.email} name="email" onChange={handleChange} />
                       <label className="white-text" for="email">Email</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
