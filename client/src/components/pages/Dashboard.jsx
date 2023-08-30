@@ -9,38 +9,57 @@ import { SAVE_GAME } from '../../utils/mutations';
 import Auth  from '../../utils/auth';
 import { getSavedGameIds, saveGameIds } from '../../utils/gameSave';
 
+
+
 export default function Dashboard() {
 
 const searchedGames = () => {
     const [ searchedGames, setSearchedGames ] = useState([]) 
-
     const [ searchInput, setSearchInput ] = useState('');
-
+    const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
     const [saveGame, { error:saveError }] = useMutation(SAVE_GAME);
 
     useEffect(() => {
-        return () => saveGameIds(savedGameIds)
-    })
+        return () => saveGameIds(savedGameIds);
+    });
 }
 
     const handleSaveGame = async (gameId) => {
-        const gameToSave = searchedGames.find((game) => game.gameId === gameId);
-        const token = Auth.loggedin() ? Auth.getToken : null;
-        if (!token) {
-            return false;
-        }
-        try {
-            const { data } = await saveGame({
-                variables: {gameData: {...gameToSave} },
-            });
-            console.log(gameToSave);
-            setSavedGameIds([...saveGame, gameToSave.gameId]);
-        } catch (err) {
-            console.error(err);
-        }
+        console.log(gameId);
+        console.log(data.getVideoGames);
+        console.log(data.getVideoGames[0].id);
+        const gamesArray = data.getVideoGames;
+        console.log(gamesArray);
+        const faveGame = gamesArray.filter((game) => game.id === gameId);
+        console.log(faveGame);
+        console.log(user.id);
     };
+        // if (gameId === gameToSave.ID) {
 
+        // }
+        // setSavedGameIds([...saveGame, gameToSave.gameId]);
+        
+        
+        
+        // console.log(searchedGames);
+        // const gameToSave = searchedGames.find((game) => game.gameId === gameId);
+        // const token = Auth.loggedin() ? Auth.getToken : null;
+        // if (!token) {
+        //     return false;
+        // }
+        // try {
+        //     const { data } = await saveGame({
+        //         variables: {gameData: {...gameToSave} },
+        //     });
+        //     console.log(gameToSave);
+           
+        // } catch (err) {
+        //     console.error(err);
+        // }
+    // };
 
+    //find a way to save the games loaded by the query so they can be saved to profile??
+    //WHY IN THE FUCK IS THIS SO DIFFICULT
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("")
     const { data, loading, error, refetch, fetchMore } = useQuery(ALL_GAMES, {
@@ -92,7 +111,7 @@ const searchedGames = () => {
                     </div>
 
 
-
+{/* const gameData = data.getVideoGames*/}
                 </div>
                 {/* this code put the results into cards  */}
                 <div className="col s9">
