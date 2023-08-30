@@ -15,7 +15,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from './App.jsx';
 import Home from './components/pages/Homepage.jsx';
 import Review from './components/pages/Review.jsx';
-// import Profile from './pages/Profile';
+import Profile from './components/pages/Profile';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login.jsx';
 import Dashboard from './components/pages/Dashboard.jsx';
@@ -43,9 +43,10 @@ const router = createBrowserRouter([
        {
         path: '/review',
         element: <Review />
-      }
-      //   path: '/profiles/:profileId',
-      //   element: <Profile />
+      },
+        {path: '/profile',
+        element: <Profile />
+    }
 
     ]
   },
