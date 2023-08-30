@@ -1,11 +1,12 @@
 //finish this? my brain small 
 // const { Profile } = require('../models/Profile');
 //api key 68eb0690763d46b0b8c318062068f9bb
+
 const { Profile, Game, Trophy, Review } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const axios = require('axios');
 require('dotenv').config()
-
+console.log(process.env.REACT_APP_API_KEY)
 //url to search api for games 
 // const apiOptions = {
 //   method: 'GET',
@@ -28,6 +29,7 @@ const resolvers = {
           .populate('games')
           // .populate('trophies')
           .populate('reviews.game');
+          console.log(user);
         return user;
       } catch (error) {
         throw error;
@@ -35,7 +37,7 @@ const resolvers = {
     },
     // this one is the one that works so far showing results. 
     getVideoGames: async (_, { title }) => {
-      const url = `https://rawg.io/api/games?search=${title}&key=246f9b92ca5c44d7bf1c561cf74089fc`
+      const url = `https://rawg.io/api/games?search=${title}&key=${process.env.REACT_APP_API_KEY}`
       try {
         const response = await axios.get(url);
         // response.data.results[0].name
@@ -73,15 +75,43 @@ const resolvers = {
 
   Mutation: {
 
-    saveGame: async (parent, { gameId, title, released, genre, platforms }, context) => {
-      console.log(context);
-      console.log(gameId);
-      const result = await Profile.findByIdAndUpdate(context.user._id, {["$push"]: {games: {gameId, title, released, genre, platforms}}});
-      const gameSaver = await Profile.findById(context.user._id);
-      return gameSaver
+    saveGame: async (parent, { gameData }, context ) => {
+      if (context.user) {
+        const updatedUser = await Profile.findByIdAndUpdate(
+          { _id: context.user._id},
+          { $push: {games: gameData } },
+          {new: true}
+        );
+        return updatedUser;
+      }
+      throw AuthenticationError
+    },
+    //old savegame mutation 
+    // saveGame: async (parent, { gameData }, context) => {
+    //   console.log(context);
+    //   console.log(gameData);
+    //   const result = await Profile.findByIdAndUpdate(context.user._id, {
+    //     ["$push"]: {
+    //       games: { gameData }
+    //       }
+    //     }
+    //   );
+    //   return result;
+    // }, 
+
+    deleteGame: async (parent, { gameId }, context) => {
+      if (context.user) {
+        const updatedProfile = await Profile.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { games: { gameId } } },
+          { new: true }
+        );
+        return updatedProfile;
+      }
+      
     },
 
-  
+
 
     addUser: async (parent, { username, email, password }) => {
       const newUser = await Profile.create({ username, email, password })

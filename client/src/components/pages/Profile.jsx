@@ -2,50 +2,54 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 
-import { QUERY_SINGLE_PROFILE, QUERY_ME } from '../../utils/auth';
+import { QUERY_PROFILE } from '../../utils/queries'
 import Auth from '../../utils/auth'
 
 const Profile = () => {
     const { profileId } = useParams();
 
     const { loading, data } = useQuery(
-        profileId ? QUERY_SINGLE_PROFILE : QUERY_ME,
+        profileId ? QUERY_PROFILE : QUERY_PROFILE,
             {
-                variables: { profileId: profileId},
+                variables: { username: "pandas19" },
             }
     );
 
             //ME needs to be changed to route to user profile above and below 
 
-    const profile = data?.me || data?.profiile || {};
+    const profile = data || {};
 
     if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
-        return <Navigate to='/me' />;
+        return <Navigate to='/profile' />;
     }
 
     if (loading) {
         return <div>Loading... </div>
     }
+    // else {
+    //     return <div>
+    //         {console.log(profile)}
+    //     </div>
+    // }
 
-    if (!profile?.name) {
-        return ( 
-            <h4>
-                You need to be logged in to see a user's profile!
-            </h4>
-        );
-    }
+    // if (!profile?.username) {
+    //     return ( 
+    //         <h4>
+    //             You need to be logged in to see a user's profile!
+    //         </h4>
+    //     );
+    // }
 
     return (
-        <div></div>
+        <div className="white-text">
+            <p >{profile.userProfile.username}</p>
+            {/* <p>{profile.userProfile.games}</p> */}
+            {profile.userProfile.games.map(game => {
+                return <p>{game.title}</p>
+            })}
+        </div>
     )
-     
-    function addedGames(){
-        const [favorites, setFavorites] = useState([]);
-        const addToFaves = (item) => {
-            setFavorites([...favorites, item]);
-        }
-    };
-    
+
 }
 
 export default Profile;
