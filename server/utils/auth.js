@@ -3,7 +3,7 @@
 const jwt = require('jsonwebtoken');
 
 const secret = 'mysecretssshhhhhhh';
-const expiration = '2h';
+const expiration = '144h';
 
 module.exports = {
   AuthenticationError: new Error('Could not authenticate user.',),

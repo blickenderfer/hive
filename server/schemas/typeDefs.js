@@ -67,6 +67,7 @@ type Query {
     userProfile(username: String): User
     game(_id: ID): Game
     getVideoGames(title: String): [API_games]
+    me: User
 }
 
 input gameInput {

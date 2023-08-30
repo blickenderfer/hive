@@ -2,24 +2,19 @@
 //make a query to search for games Api($title: String) { api(title: $title){title}}
 import { gql } from '@apollo/client';
 
-// export const QUERY_ME = gql`
-// query me {
-//     me {
-//       _id
-//       username
-//       email
-//       bookCount
-//       savedGames {
-//         bookId
-//         authors
-//         description
-//         image
-//         link
-//         title
-//       }
-//     }
-//   }
-// `
+
+export const QUERY_ME = gql`
+query Me {
+  me {
+    _id
+    email
+    games {
+      gameId
+    }
+    username
+  }
+}
+`
 
 export const QUERY_PROFILE = gql`
 query UserProfile($username: String) {

@@ -35,6 +35,13 @@ const resolvers = {
         throw error;
       }
     },
+    me: async (parent, args, context) => {
+      console.log(context.user)
+      if (context.user) {
+        const userData = await Profile.findOne({ _id: context.user._id})
+        return userData
+      } throw AuthenticationError
+    },
     // this one is the one that works so far showing results. 
     getVideoGames: async (_, { title }) => {
       const url = `https://rawg.io/api/games?search=${title}&key=${process.env.REACT_APP_API_KEY}`
