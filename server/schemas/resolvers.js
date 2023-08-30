@@ -73,15 +73,43 @@ const resolvers = {
 
   Mutation: {
 
-    saveGame: async (parent, { gameId, title, released, genre, platforms }, context) => {
-      console.log(context);
-      console.log(gameId);
-      const result = await Profile.findByIdAndUpdate(context.user._id, {["$push"]: {games: {gameId, title, released, genre, platforms}}});
-      const gameSaver = await Profile.findById(context.user._id);
-      return gameSaver
+    saveGame: async (parent, { gameData }, context ) => {
+      if (context.user) {
+        const updatedUser = await Profile.findByIdAndUpdate(
+          { _id: context.user._id},
+          { $push: {games: gameData } },
+          {new: true}
+        );
+        return updatedUser;
+      }
+      throw AuthenticationError
+    },
+    //old savegame mutation 
+    // saveGame: async (parent, { gameData }, context) => {
+    //   console.log(context);
+    //   console.log(gameData);
+    //   const result = await Profile.findByIdAndUpdate(context.user._id, {
+    //     ["$push"]: {
+    //       games: { gameData }
+    //       }
+    //     }
+    //   );
+    //   return result;
+    // }, 
+
+    deleteGame: async (parent, { gameId }, context) => {
+      if (context.user) {
+        const updatedProfile = await Profile.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { games: { gameId } } },
+          { new: true }
+        );
+        return updatedProfile;
+      }
+      
     },
 
-  
+
 
     addUser: async (parent, { username, email, password }) => {
       const newUser = await Profile.create({ username, email, password })
