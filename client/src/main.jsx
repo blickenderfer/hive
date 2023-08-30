@@ -44,6 +44,7 @@ const router = createBrowserRouter([
         path: '/review',
         element: <Review />
       },
+
         {path: '/profile',
         element: <Profile />
     }
