@@ -91,6 +91,7 @@ const searchedGames = () => {
 
 
                 </div>
+                {/* this code put the results into cards  */}
                 <div className="col s9">
                 {data !== undefined && query !== '' && (
                     <div className="row">
