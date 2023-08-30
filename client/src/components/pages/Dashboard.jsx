@@ -33,7 +33,7 @@ const searchedGames = () => {
         const faveGame = gamesArray.filter((game) => game.id === gameId);
         console.log(faveGame);
         console.log(user.id);
-        
+    };
         // if (gameId === gameToSave.ID) {
 
         // }
@@ -56,7 +56,7 @@ const searchedGames = () => {
         // } catch (err) {
         //     console.error(err);
         // }
-    };
+    // };
 
     //find a way to save the games loaded by the query so they can be saved to profile??
     //WHY IN THE FUCK IS THIS SO DIFFICULT
