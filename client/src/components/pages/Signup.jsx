@@ -58,8 +58,8 @@ const Signup = function () {
                     </div>
 
                     <div className="input-field col s12">
-                    <label for="username" className="white-text">Username</label>
-                      <input id="username" name="username" type="text" value={formState.username} className="validate" onChange={handleChange} />
+                      <input id="username"name="username" value={formState.username} className="validate" onChange={handleChange} />
+                      <label for="username" type="text" className="white-text">Username</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
 
