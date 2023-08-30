@@ -56,8 +56,6 @@ query getVideoGames($title: String) {
   }
 }
 `
-
-// export const ADD_REVIEW = gql`
-// mutation writeReview($reviewData: ReviewInput!) {
-
-// }`
+//need to add get review for single reviews (when someone looks at a single game page) and get all reviews (for someones profile)
+//maybe for now just work on get all reviews for a users profile and a single review query can be done later?
+// export const GET_REVIEW = gql`
