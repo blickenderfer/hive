@@ -35,8 +35,9 @@ body {
 }
 
 .user-section {
-  background-color: rgb(143, 137, 179);
-  
+  background-image: linear-gradient(black,rgba(17, 84, 191, 0.568));
+  color: white;
+  border-radius: 20px;
 }
 
 .user-section img {
