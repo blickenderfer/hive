@@ -41,6 +41,7 @@ query UserProfile($username: String) {
 export const ALL_GAMES = gql`
 query getVideoGames($title: String) {
   getVideoGames(title: $title) {
+    id
     title
     released
     platforms {
