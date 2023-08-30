@@ -2,50 +2,55 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 
-import { QUERY_SINGLE_PROFILE, QUERY_ME } from '../../utils/auth';
+import { QUERY_ME } from '../../utils/queries'
 import Auth from '../../utils/auth'
 
 const Profile = () => {
     const { profileId } = useParams();
 
-    const { loading, data } = useQuery(
-        profileId ? QUERY_SINGLE_PROFILE : QUERY_ME,
-            {
-                variables: { profileId: profileId},
-            }
+    const { loading, data } = useQuery( QUERY_ME
+        // profileId ? QUERY_PROFILE : QUERY_PROFILE,
+            // {
+            //     variables: { username: "pandas19" },
+            // }
     );
 
             //ME needs to be changed to route to user profile above and below 
 
-    const profile = data?.me || data?.profiile || {};
-
+    // const profile = data || {};
+    const username = data?.me.username || ""
     if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
-        return <Navigate to='/me' />;
+        return <Navigate to='/profile' />;
     }
 
     if (loading) {
         return <div>Loading... </div>
     }
+    // else {
+    //     return <div>
+    //         {console.log(profile)}
+    //     </div>
+    // }
 
-    if (!profile?.name) {
-        return ( 
-            <h4>
-                You need to be logged in to see a user's profile!
-            </h4>
-        );
-    }
+    // if (!profile?.username) {
+    //     return ( 
+    //         <h4>
+    //             You need to be logged in to see a user's profile!
+    //         </h4>
+    //     );
+    // }
 
     return (
-        <div></div>
+        <div className="white-text">
+            <p >{username}</p>
+
+            {/* <p>{profile.userProfile.games}</p> */}
+            {/* {profile.games.map(game => {
+                return <p>{game.title}</p>
+            })} */}
+        </div>
     )
-     
-    function addedGames(){
-        const [favorites, setFavorites] = useState([]);
-        const addToFaves = (item) => {
-            setFavorites([...favorites, item]);
-        }
-    };
-    
+
 }
 
 export default Profile;

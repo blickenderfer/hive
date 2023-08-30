@@ -52,19 +52,19 @@ const Signup = function () {
                   <div className="row">
 
                     <div className="input-field col s12">
-                      <input id="email" type="email" name="email" value={formState.email} className="validate" onChange={handleChange} />
+                      <input id="email" type="email" name="email" value={formState.email} className=" white-text validate" onChange={handleChange} />
                       <label for="email" className="white-text">Email</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
 
                     <div className="input-field col s12">
-                      <input id="username"name="username" value={formState.username} className="validate" onChange={handleChange} />
+                      <input id="username"name="username" value={formState.username} className=" white-text validate" onChange={handleChange} />
                       <label for="username" type="text" className="white-text">Username</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
 
                     <div className="input-field col s12">
-                      <input id="password" type="password" name="password" value={formState.password} className="validate" onChange={handleChange} />
+                      <input id="password" type="password" name="password" value={formState.password} className="white-text validate" onChange={handleChange} />
                       <label for="password" className="white-text">Password</label>
                       <span className="helper-text" data-error="wrong" data-success="right"></span>
                     </div>
