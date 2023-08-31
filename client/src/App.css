@@ -156,6 +156,12 @@ body {
   font-size: 15px !important;
 }
 
-
+.user-greeting {
+  font-size: 25px;
+  padding: 10px;
+  background-image: linear-gradient(black,rgba(17, 84, 191, 0.568));
+  margin: 20px;
+  border-radius: 10px;
+}
 
 
