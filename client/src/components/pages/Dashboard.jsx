@@ -6,43 +6,39 @@ import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client';
 import { ALL_GAMES } from '../../utils/queries';
 import { SAVE_GAME } from '../../utils/mutations';
-import Auth  from '../../utils/auth';
+import Auth from '../../utils/auth';
+
 
 
 
 
 export default function Dashboard() {
 
-    const handleSaveGame = async (gameId) => {
-        console.log(gameId);
-        const gamesArray = data.getVideoGames;
-        console.log(gamesArray);
-        const faveGame = gamesArray.filter((game) => game.id === gameId);
-        console.log(faveGame);
-        
-    };
-        // if (gameId === gameToSave.ID) {
 
-        // }
-        // setSavedGameIds([...saveGame, gameToSave.gameId]);
-        
-        
-        
-        // console.log(searchedGames);
-        // const gameToSave = searchedGames.find((game) => game.gameId === gameId);
-        // const token = Auth.loggedin() ? Auth.getToken : null;
-        // if (!token) {
-        //     return false;
-        // }
-        // try {
-        //     const { data } = await saveGame({
-        //         variables: {gameData: {...gameToSave} },
-        //     });
-        //     console.log(gameToSave);
-           
-        // } catch (err) {
-        //     console.error(err);
-        // }
+
+
+    // if (gameId === gameToSave.ID) {
+
+    // }
+    // setSavedGameIds([...saveGame, gameToSave.gameId]);
+
+
+
+    // console.log(searchedGames);
+    // const gameToSave = searchedGames.find((game) => game.gameId === gameId);
+    // const token = Auth.loggedin() ? Auth.getToken : null;
+    // if (!token) {
+    //     return false;
+    // }
+    // try {
+    //     const { data } = await saveGame({
+    //         variables: {gameData: {...gameToSave} },
+    //     });
+    //     console.log(gameToSave);
+
+    // } catch (err) {
+    //     console.error(err);
+    // }
     // };
 
     //find a way to save the games loaded by the query so they can be saved to profile??
@@ -54,6 +50,31 @@ export default function Dashboard() {
             title: query
         }
     });
+
+    const [saveToFavorites, { error2, data2 }] = useMutation(SAVE_GAME);
+
+    const handleSaveGame = async ({ id, title, released }) => {
+        //console.log(gameId);
+
+        console.log("adding to favorites:", id, title, released)
+
+        saveToFavorites({
+            variables: {
+                id: id,
+                title: title,
+                released: released
+            }
+
+        })
+        /*
+        const gamesArray = data.getVideoGames;
+        console.log(gamesArray);
+        const faveGame = gamesArray.filter((game) => game.id === gameId);
+        */
+        //console.log(faveGame);
+        console.log("did we save?", data2)
+
+    };
 
     const searchHandler = () => {
         console.log(search);
@@ -93,34 +114,36 @@ export default function Dashboard() {
                     <div className="input-field col s6">
 
                         <input placeholder="Find Games" id="game-search" type="text" className="validate white-text" onChange={(e => setSearch(e.target.value))} />
-                        <button  className="search-button"onClick={searchHandler}>Search</button>
+                        <button className="search-button" onClick={searchHandler}>Search</button>
 
                     </div>
 
 
-{/* const gameData = data.getVideoGames*/}
+                    {/* const gameData = data.getVideoGames*/}
                 </div>
                 {/* this code put the results into cards  */}
                 <div className="col s9">
-                {data !== undefined && query !== '' && (
-                    <div className="row">
-                        {data.getVideoGames.map(game => (
-                            <div key={game.id} className="col s12 m6">
-                                <div className="card blue-grey darken-1 game-card">
-                                    <div className="card-content white-text">
-                                        <span className="card-title game-name">{game.title}</span>
-                                        <span className="card-title release-date">Released {game.released}</span>
-                                        <span className='card-title game-id'>{game.id}</span>
-                                        <button className='addgamebtn' id="savebtn" onClick={(e) => {
-                                            handleSaveGame(game.id) }}>Save to favourites</button>
+                    {data !== undefined && query !== '' && (
+                        <div className="row">
+                            {data.getVideoGames.map(game => (
+                                <div key={game.id} className="col s12 m6">
+                                    <div className="card blue-grey darken-1 game-card">
+                                        <div className="card-content white-text">
+                                            <span className="card-title game-name">{game.title}</span>
+                                            <span className="card-title release-date">Released {game.released}</span>
+                                            <span className='card-title game-id'>{game.id}</span>
+                                            <button className='addgamebtn' id="savebtn" onClick={(e) => {
+                                                handleSaveGame(game)
+                                            }}>Save to favourites</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                            ))}
+                        </div>
+                    )}
+                </div>
+
             </div>
-        
-        </div>
-  </>
-  );}
+        </>
+    );
+}

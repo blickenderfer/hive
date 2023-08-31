@@ -17,7 +17,7 @@ const gameSchema = new Schema({
         type: String,
     },
     platforms: {
-      type: String,  
+        type: String,
     }
 });
 

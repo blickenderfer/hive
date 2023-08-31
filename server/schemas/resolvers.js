@@ -29,7 +29,7 @@ const resolvers = {
           .populate('games')
           // .populate('trophies')
           .populate('reviews.game');
-          console.log(user);
+        console.log(user);
         return user;
       } catch (error) {
         throw error;
@@ -38,10 +38,13 @@ const resolvers = {
     me: async (parent, args, context) => {
       console.log(context.user)
       if (context.user) {
-        const userData = await Profile.findOne({ _id: context.user._id})
+        const userData = await Profile.findOne({ _id: context.user._id })
         return userData
       } throw AuthenticationError
     },
+
+
+
     // this one is the one that works so far showing results. 
     getVideoGames: async (_, { title }) => {
       const url = `https://rawg.io/api/games?search=${title}&key=246f9b92ca5c44d7bf1c561cf74089fc`
@@ -78,16 +81,28 @@ const resolvers = {
         throw error;
       }
     },
+
+    /**/
+    getFavorites: async (_, args) => {
+
+      const userId = "64ebdaa2369fd8c7546b0767";
+
+      const profile = await Profile.findById(userId);
+
+      return profile.games
+
+    }
+
   },
 
   Mutation: {
 
-    saveGame: async (parent, { gameData }, context ) => {
+    saveGame: async (parent, { gameData }, context) => {
       if (context.user) {
         const updatedUser = await Profile.findByIdAndUpdate(
-          { _id: context.user._id},
-          { $push: {games: gameData } },
-          {new: true}
+          { _id: context.user._id },
+          { $push: { games: gameData } },
+          { new: true }
         );
         return updatedUser;
       }
@@ -107,6 +122,7 @@ const resolvers = {
     // }, 
 
     deleteGame: async (parent, { gameId }, context) => {
+      console.log("delete game", context)
       if (context.user) {
         const updatedProfile = await Profile.findOneAndUpdate(
           { _id: context.user._id },
@@ -115,9 +131,28 @@ const resolvers = {
         );
         return updatedProfile;
       }
-      
-    },
 
+    },
+    saveToFavorites: async (parent, { id, title, released }, context) => {
+      //64ebdaa2369fd8c7546b0767
+      const userId = "64ebdaa2369fd8c7546b0767";
+
+      console.log("resolver save to favorites", id, title, released)
+
+      console.log("in resolove", context)
+      await Profile.findByIdAndUpdate(userId, {
+        $push: {
+          games: {
+            gameId: id,
+            title: title,
+            released: released
+          }
+        }
+
+      })
+
+      return true
+    },
 
 
     addUser: async (parent, { username, email, password }) => {
@@ -129,12 +164,14 @@ const resolvers = {
     // Update a user's profile information
     /*
     updateProfile: async (parent, { input }, { dataSources }) => {
-
+ 
       const updatedProfile = await dataSources.profileAPI.updateProfile(input);
       return updatedProfile;
     }, */
     // Checks username and password validation. 
-    login: async (parent, { email, password }) => {
+    login: async (parent, { email, password }, context) => {
+
+      console.log("login", context)
       console.log({ email, password })
       const profile = await Profile.findOne({ email: email });
       console.log(1, profile)

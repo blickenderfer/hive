@@ -68,6 +68,7 @@ type Query {
     game(_id: ID): Game
     getVideoGames(title: String): [API_games]
     me: User
+    getFavorites: [Game]
 }
 
 input gameInput {
@@ -90,6 +91,7 @@ type Mutation {
     addReview(reviewId: String!, game: ID!, body: String!): Reviews
     # also going to need a delete review mutation
     addFriend(username: String!, friendUsername: String!): User
+        saveToFavorites(id: ID, title: String, released: String): User
   }
 `
 

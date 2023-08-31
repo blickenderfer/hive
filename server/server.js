@@ -6,7 +6,8 @@ const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-
+const { mainModule } = require('process');
+const cors = require('cors')
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -14,10 +15,13 @@ const server = new ApolloServer({
   resolvers,
 });
 
+
+
+
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();
-
+  app.use(cors())
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
