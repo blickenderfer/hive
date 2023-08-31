@@ -2,22 +2,28 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
 
-import { QUERY_ME } from '../../utils/queries'
+import { QUERY_ME, GET_FAV } from '../../utils/queries'
+
 import Auth from '../../utils/auth'
 
 const Profile = () => {
     const { profileId } = useParams();
+    const { data } = useQuery(GET_FAV);
 
-    const { loading, data } = useQuery( QUERY_ME
-        // profileId ? QUERY_PROFILE : QUERY_PROFILE,
+
+    /*
+        const { loading, data } = useQuery(QUERY_ME
+            // profileId ? QUERY_PROFILE : QUERY_PROFILE,
             // {
             //     variables: { username: "pandas19" },
             // }
-    );
-
-            //ME needs to be changed to route to user profile above and below 
+        );
+    */
+    //ME needs to be changed to route to user profile above and below 
 
     // const profile = data || {};
+
+    /*
     const username = data?.me.username || ""
     if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
         return <Navigate to='/profile' />;
@@ -26,6 +32,7 @@ const Profile = () => {
     if (loading) {
         return <div>Loading... </div>
     }
+    */
     // else {
     //     return <div>
     //         {console.log(profile)}
@@ -39,10 +46,14 @@ const Profile = () => {
     //         </h4>
     //     );
     // }
-
+    console.log("what is data", data)
     return (
         <div className="white-text">
-            <p >{username}</p>
+            {
+                data !== undefined && data.getFavorites.map(d => {
+                    return <div>{d.title} {d.released}</div>
+                })
+            }
 
             {/* <p>{profile.userProfile.games}</p> */}
             {/* {profile.games.map(game => {
