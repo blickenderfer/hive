@@ -83,9 +83,12 @@ const resolvers = {
     },
 
     /**/
-    getFavorites: async (_, args) => {
+    getFavorites: async (_, args, context) => {
 
-      const userId = "64ebdaa2369fd8c7546b0767";
+      // const userId = "64ebdaa2369fd8c7546b0767";
+      const userId = context._id
+
+      console.log(userId);
 
       const profile = await Profile.findById(userId);
 
@@ -97,17 +100,17 @@ const resolvers = {
 
   Mutation: {
 
-    saveGame: async (parent, { gameData }, context) => {
-      if (context.user) {
-        const updatedUser = await Profile.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { games: gameData } },
-          { new: true }
-        );
-        return updatedUser;
-      }
-      throw AuthenticationError
-    },
+    // saveGame: async (parent, { gameData }, context) => {
+    //   if (context.user) {
+    //     const updatedUser = await Profile.findByIdAndUpdate(
+    //       { _id: context.user._id },
+    //       { $push: { games: gameData } },
+    //       { new: true }
+    //     );
+    //     return updatedUser;
+    //   }
+    //   throw AuthenticationError
+    // },
     //old savegame mutation 
     // saveGame: async (parent, { gameData }, context) => {
     //   console.log(context);
@@ -135,12 +138,13 @@ const resolvers = {
     },
     saveToFavorites: async (parent, { id, title, released }, context) => {
       //64ebdaa2369fd8c7546b0767
-      const userId = "64ebdaa2369fd8c7546b0767";
+      console.log(context._id);
+      const userId = context.email;
 
       console.log("resolver save to favorites", id, title, released)
 
       console.log("in resolove", context)
-      await Profile.findByIdAndUpdate(userId, {
+      const user = await Profile.findOneAndUpdate({email: userId}, {
         $push: {
           games: {
             gameId: id,
@@ -150,8 +154,8 @@ const resolvers = {
         }
 
       })
-
-      return true
+      console.log(user);
+      return user;
     },
 
 

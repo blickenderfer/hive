@@ -83,15 +83,12 @@ input gameInput {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    # addGame and saveGame do the same thing?
-    # addGame(username: String!, game: ID!): User
-    saveGame(gameData: gameInput! ): User
     deleteGame(gameId: String!, title: String, released: String, genre: String, platforms: String): User
     addTrophy(username: String!, trophy: ID!): User
     addReview(reviewId: String!, game: ID!, body: String!): Reviews
     # also going to need a delete review mutation
     addFriend(username: String!, friendUsername: String!): User
-        saveToFavorites(id: ID, title: String, released: String): User
+    saveToFavorites(id: ID, title: String, released: String): User
   }
 `
 
