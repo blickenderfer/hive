@@ -6,7 +6,7 @@ const { Profile, Game, Trophy, Review } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const axios = require('axios');
 require('dotenv').config()
-console.log(process.env.REACT_APP_API_KEY)
+// console.log(process.env.REACT_APP_API_KEY)
 //url to search api for games 
 // const apiOptions = {
 //   method: 'GET',
@@ -44,7 +44,7 @@ const resolvers = {
     },
     // this one is the one that works so far showing results. 
     getVideoGames: async (_, { title }) => {
-      const url = `https://rawg.io/api/games?search=${title}&key=${process.env.REACT_APP_API_KEY}`
+      const url = `https://rawg.io/api/games?search=${title}&key=246f9b92ca5c44d7bf1c561cf74089fc`
       try {
         const response = await axios.get(url);
         // response.data.results[0].name
