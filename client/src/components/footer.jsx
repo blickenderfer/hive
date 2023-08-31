@@ -1,4 +1,7 @@
-export default function Footer() {
+
+
+export default function footer() {
+
     <div className="footer-copyright">
             <div className="container">
             © 2023 Copyright Text
