@@ -10,56 +10,41 @@ const Profile = () => {
     const { profileId } = useParams();
     const { data } = useQuery(GET_FAV);
 
-
-    /*
-        const { loading, data } = useQuery(QUERY_ME
-            // profileId ? QUERY_PROFILE : QUERY_PROFILE,
-            // {
-            //     variables: { username: "pandas19" },
-            // }
-        );
-    */
-    //ME needs to be changed to route to user profile above and below 
-
-    // const profile = data || {};
-
-    /*
-    const username = data?.me.username || ""
-    if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
-        return <Navigate to='/profile' />;
-    }
-
-    if (loading) {
-        return <div>Loading... </div>
-    }
-    */
-    // else {
-    //     return <div>
-    //         {console.log(profile)}
-    //     </div>
-    // }
-
-    // if (!profile?.username) {
-    //     return ( 
-    //         <h4>
-    //             You need to be logged in to see a user's profile!
-    //         </h4>
-    //     );
-    // }
     console.log("what is data", data)
     return (
+        <>
         <div className="white-text">
+        <div className="userinfo">
+        <p className="user-greeting">Hi, Username! View your saved games here.</p>
+        </div>
             {
                 data !== undefined && data.getFavorites.map(d => {
                     return <div>{d.title} {d.released}</div>
                 })
             }
 
-            {/* <p>{profile.userProfile.games}</p> */}
-            {/* {profile.games.map(game => {
-                return <p>{game.title}</p>
-            })} */}
+            <div className="col s9">
+                {data !== undefined && query !== '' && (
+                    <div className="row">
+                        {data.getFavorites.map(d => (
+                            <div key={d.id} className="col s12 m6">
+                                <div className="card blue-grey darken-1 game-card">
+                                    <div className="card-content white-text">
+                                        <span className="card-title game-name">{d.title}</span>
+                                        <span className="card-title release-date">Released {d.released}</span>
+                                        <span className='card-title game-id'>{d.id}</span>
+                                        <button className='deletebtn' id="deletebtn" onClick={(e) => {
+                                            handleSaveGame(game)
+                                        }}>Remove from Favorites</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
+        </>
     )
 
 }
