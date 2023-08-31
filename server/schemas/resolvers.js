@@ -84,16 +84,10 @@ const resolvers = {
 
     /**/
     getFavorites: async (_, args, context) => {
-
-      // const userId = "64ebdaa2369fd8c7546b0767";
       const userId = context._id
-
       console.log(userId);
-
       const profile = await Profile.findById(userId);
-
       return profile.games
-
     }
 
   },
@@ -137,12 +131,8 @@ const resolvers = {
 
     },
     saveToFavorites: async (parent, { id, title, released }, context) => {
-      //64ebdaa2369fd8c7546b0767
-      console.log(context._id);
       const userId = context.email;
-
       console.log("resolver save to favorites", id, title, released)
-
       console.log("in resolove", context)
       const user = await Profile.findOneAndUpdate({email: userId}, {
         $push: {
