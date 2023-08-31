@@ -7,32 +7,19 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ALL_GAMES } from '../../utils/queries';
 import { SAVE_GAME } from '../../utils/mutations';
 import Auth  from '../../utils/auth';
-import { getSavedGameIds, saveGameIds } from '../../utils/gameSave';
+
 
 
 
 export default function Dashboard() {
 
-const searchedGames = () => {
-    const [ searchedGames, setSearchedGames ] = useState([]) 
-    const [ searchInput, setSearchInput ] = useState('');
-    const [savedGameIds, setSavedGameIds] = useState(getSavedGameIds());
-    const [saveGame, { error:saveError }] = useMutation(SAVE_GAME);
-
-    useEffect(() => {
-        return () => saveGameIds(savedGameIds);
-    });
-}
-
     const handleSaveGame = async (gameId) => {
         console.log(gameId);
-        console.log(data.getVideoGames);
-        console.log(data.getVideoGames[0].id);
         const gamesArray = data.getVideoGames;
         console.log(gamesArray);
         const faveGame = gamesArray.filter((game) => game.id === gameId);
         console.log(faveGame);
-        console.log(user.id);
+        
     };
         // if (gameId === gameToSave.ID) {
 
@@ -125,8 +112,7 @@ const searchedGames = () => {
                                         <span className="card-title release-date">Released {game.released}</span>
                                         <span className='card-title game-id'>{game.id}</span>
                                         <button className='addgamebtn' id="savebtn" onClick={(e) => {
-                                            handleSaveGame(game.id)
-                                        }}>Save to favourites</button>
+                                            handleSaveGame(game.id) }}>Save to favourites</button>
                                     </div>
                                 </div>
                             </div>
