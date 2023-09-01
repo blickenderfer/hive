@@ -18,7 +18,7 @@ type Auth {
 }
 
 type Game {
-    gameId: ID
+    _id: ID
     title: String
     released: String
     genre: String
@@ -40,7 +40,6 @@ type Reviews {
 
 
 type API_games {
-
     id: ID
     title: String
     released: String
@@ -83,7 +82,7 @@ input gameInput {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    deleteGame(gameId: String!, title: String, released: String, genre: String, platforms: String): User
+    deleteGame(_id: String!): User
     addTrophy(username: String!, trophy: ID!): User
     addReview(reviewId: String!, game: ID!, body: String!): Reviews
     # also going to need a delete review mutation

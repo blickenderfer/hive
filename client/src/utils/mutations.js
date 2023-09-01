@@ -36,14 +36,10 @@ mutation Mutation($saveToFavoritesId: ID, $title: String, $released: String) {
 `
 
 export const DELETE_GAME = gql`
-mutation DeleteGame($gameId: String!) {
-  deleteGame(gameId: $gameId) {
+mutation DeleteGame($_id: String!) {
+  deleteGame(_id: $_id) {
     games {
-      gameId
-      genre
-      platforms
-      released
-      title
+      _id
     }
   }
 }

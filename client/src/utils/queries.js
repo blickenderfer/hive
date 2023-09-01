@@ -58,6 +58,7 @@ query getVideoGames($title: String) {
 export const GET_FAV = gql`
 query GetFavorites {
   getFavorites {
+    _id
     released
     title
   }
