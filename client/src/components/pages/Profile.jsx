@@ -24,7 +24,7 @@ const Profile = () => {
             }
 
             <div className="col s9">
-                {data !== undefined && query !== '' && (
+                {data !== undefined && (
                     <div className="row">
                         {data.getFavorites.map(d => (
                             <div key={d.id} className="col s12 m6">
