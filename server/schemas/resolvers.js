@@ -21,7 +21,7 @@ require('dotenv').config()
 const resolvers = {
   Query: {
     userProfile: async (_, { username, password }) => {
-
+      //use context here please
       //cross reference password and fail if it doesn't match
 
       try {
@@ -30,6 +30,7 @@ const resolvers = {
           // .populate('trophies')
           .populate('reviews.game');
         // console.log(user);
+        console.log(JSON.stringify(user, null, 2));
         return user;
       } catch (error) {
         throw error;
@@ -121,15 +122,21 @@ const resolvers = {
     //   return result;
     // }, 
 
-    deleteGame: async (parent, { gameId }, context) => {
+    deleteGame: async (parent, { _id }, context) => {
       // console.log("delete game", context)
-      if (context.user) {
+      if (context._id) {
         const updatedProfile = await Profile.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { games: { gameId } } },
+          { _id: context._id },
+          { $pull: { games: { _id: _id } } },
           { new: true }
         );
-        return updatedProfile;
+          const user = await Profile.findOne({ _id: context._id })
+            .populate('games')
+            // .populate('trophies')
+            .populate('reviews.game');
+          // console.log(user);
+        // return updatedProfile;
+        return user;
       }
 
     },
@@ -145,7 +152,6 @@ const resolvers = {
             released: released
           }
         }
-
       })
       console.log(user);
       return user;
