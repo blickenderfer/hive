@@ -29,16 +29,19 @@ const resolvers = {
           .populate('games')
           // .populate('trophies')
           .populate('reviews.game');
-        console.log(user);
+        // console.log(user);
         return user;
       } catch (error) {
         throw error;
       }
     },
     me: async (parent, args, context) => {
-      console.log(context.user)
-      if (context.user) {
-        const userData = await Profile.findOne({ _id: context.user._id })
+      console.log("--------------")
+      console.log(context)
+      const userId = context._id
+     
+      if (context._id) {
+        const userData = await Profile.findOne({ _id: userId })
         return userData
       } throw AuthenticationError
     },
@@ -119,7 +122,7 @@ const resolvers = {
     // }, 
 
     deleteGame: async (parent, { gameId }, context) => {
-      console.log("delete game", context)
+      // console.log("delete game", context)
       if (context.user) {
         const updatedProfile = await Profile.findOneAndUpdate(
           { _id: context.user._id },

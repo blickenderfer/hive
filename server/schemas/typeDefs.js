@@ -3,7 +3,7 @@
 
 const typeDefs = `#graphql
 type User {
-    _id: String
+    _id: ID
     username: String
     email: String
     games: [Game]
@@ -18,7 +18,7 @@ type Auth {
 }
 
 type Game {
-    gameId: ID!
+    gameId: ID
     title: String
     released: String
     genre: String

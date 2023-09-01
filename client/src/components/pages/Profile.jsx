@@ -9,13 +9,15 @@ import Auth from '../../utils/auth'
 const Profile = () => {
     const { profileId } = useParams();
     const { data } = useQuery(GET_FAV);
-
+    const { data:user } = useQuery(QUERY_ME, {fetchPolicy:"no-cache"})
+    const userData = user?.me || {}
+    console.log(userData)
     console.log("what is data", data)
     return (
         <>
         <div className="white-text">
         <div className="userinfo">
-        <p className="user-greeting">Hi, Username! View your saved games here.</p>
+        <p className="user-greeting">Hi, {userData.username}! View your saved games here.</p>
         </div>
             {
                 data !== undefined && data.getFavorites.map(d => {
