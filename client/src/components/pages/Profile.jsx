@@ -1,7 +1,9 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
+
 import { DELETE_GAME } from '../../utils/mutations';
+
 import { QUERY_ME, GET_FAV } from '../../utils/queries'
 
 import Auth from '../../utils/auth'
@@ -29,6 +31,7 @@ const Profile = () => {
     console.log("what is data", data)
     return (
         <>
+
             <div className="white-text">
                 <div className="userinfo">
                     <p className="user-greeting">Hi, {userData.username}! View your saved games here.</p>
@@ -47,6 +50,7 @@ const Profile = () => {
                                                 deleteGame(d._id)
                                             }}>Remove from Favorites</button>
                                         </div>
+
                                     </div>
                                 </div>
                             ))}

@@ -7,6 +7,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { ALL_GAMES } from '../../utils/queries';
 import { SAVE_GAME } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import space from "../../assets/space.gif";
+
 
 
 
@@ -106,6 +108,9 @@ export default function Dashboard() {
                 <div className="col s3 user-section">
                     <h2>Welcome, username!</h2>
                     <p>Browse games to review here.</p>
+                    <div className="spaceBox ">
+            <img className="spaceGif" src={space} alt="space-invader" />
+          </div>
                 </div>
 
                 {/* will need a Games, Reviews, Friends page to match up with the links above. games page will be the games added to collection, Reviews will be a list of games you and/or your friends have reviewed, Friends is a list of users that are your "friends".  Change the h3 with Welcome, Username to Welcome {user.userName}  In the games page need each card to contain a button to add a review and a maybe a dropdown to show all reviews on the games.  Reviews will need to have cards with the game title and then associated reviews and a textbox to add review, and users should be able to delete their own review.  friends page should be a card for each friend, render user map function.  include delete friend button and maybe just a count of how many games they have added and how many reviews they have left */}
