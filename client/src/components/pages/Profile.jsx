@@ -1,7 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import React, { useState } from 'react';
-
 import { QUERY_ME, GET_FAV } from '../../utils/queries'
 
 import Auth from '../../utils/auth'
@@ -13,8 +12,9 @@ const Profile = () => {
     console.log("what is data", data)
     return (
         <>
+        
         <div className="white-text">
-        <div className="userinfo">
+        <div className="userinfo col s12">
         <p className="user-greeting">Hi, Username! View your saved games here.</p>
         </div>
             {
@@ -24,7 +24,7 @@ const Profile = () => {
             }
 
             <div className="col s9">
-                {data !== undefined && query !== '' && (
+                {data !== undefined && (
                     <div className="row">
                         {data.getFavorites.map(d => (
                             <div key={d.id} className="col s12 m6">
