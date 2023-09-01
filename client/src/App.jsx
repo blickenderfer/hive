@@ -26,7 +26,7 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       mode: "no-cors",
-      authorization: token ? `Bearer ${token}` : '',
+      Authorization: token ? `Bearer ${token}` : '',
     },
   };
 });

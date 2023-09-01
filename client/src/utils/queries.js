@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 
 
 export const QUERY_ME = gql`
-query Me {
+query me {
   me {
     _id
     email
@@ -58,6 +58,7 @@ query getVideoGames($title: String) {
 export const GET_FAV = gql`
 query GetFavorites {
   getFavorites {
+    _id
     released
     title
   }

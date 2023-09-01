@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = function (props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER, {fetchPolicy:"no-cache"});
   const navigate = useNavigate();
 
   // update state based on form input changes
@@ -28,8 +28,8 @@ const Login = function (props) {
     try {
       const { data } = await login({
         variables: {
-          email: "test@test.com",
-          password: "test123"
+          email: formState.email,
+          password: formState.password
         }
       });
 
