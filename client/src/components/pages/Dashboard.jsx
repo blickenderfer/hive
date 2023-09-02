@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 
 import { Link } from 'react-router-dom'
 import { useQuery, useMutation } from '@apollo/client';
-import { ALL_GAMES } from '../../utils/queries';
-import { SAVE_GAME } from '../../utils/mutations';
+import { ALL_GAMES, QUERY_ME } from '../../utils/queries';
+import {  SAVE_GAME } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import space from "../../assets/space.gif";
 
@@ -16,7 +16,10 @@ import space from "../../assets/space.gif";
 
 export default function Dashboard() {
 
-
+    
+    const { data: user } = useQuery(QUERY_ME, { fetchPolicy: "no-cache" })
+    const userData = user?.me || {}
+    console.log(userData)
 
 
     // if (gameId === gameToSave.ID) {
@@ -54,6 +57,9 @@ export default function Dashboard() {
     });
 
     const [saveToFavorites, { error2, data2 }] = useMutation(SAVE_GAME);
+    
+      
+
 
     const handleSaveGame = async ({ id, title, released }) => {
         //console.log(gameId);
@@ -104,9 +110,10 @@ export default function Dashboard() {
         </div> */}
 
             <div className="row">
-
+ 
                 <div className="col s3 user-section">
-                    <h2>Welcome, username!</h2>
+                   
+                    <h2>Welcome, {userData.username}</h2>
                     <p>Browse games to review here.</p>
                     <div className="spaceBox ">
             <img className="spaceGif" src={space} alt="space-invader" />
