@@ -8,9 +8,9 @@ query me {
   me {
     _id
     email
-    games {
-      gameId
-    }
+    # games {
+    #   gameId
+    # }
     username
   }
 }

@@ -12,6 +12,8 @@ import Auth from '../../utils/auth'
 
 const Profile = () => {
     const [deleteSaveGame, { error, data2 }] = useMutation(DELETE_GAME);
+    
+
 
     const deleteGame = async (_id) => {
         console.log("deleting game", _id);

@@ -36,16 +36,25 @@ const resolvers = {
         throw error;
       }
     },
-    me: async (parent, args, context) => {
-      console.log("--------------")
-      console.log(context)
+    me: 
+    
+    async (_, args, context) => {
       const userId = context._id
-     
-      if (context._id) {
-        const userData = await Profile.findOne({ _id: userId })
-        return userData
-      } throw AuthenticationError
+      console.log(userId);
+      const profile = await Profile.findById(userId);
+      return profile
     },
+    
+    // async (parent, args, context) => {
+    //   console.log("--------------")
+    //   console.log(context)
+    //   const userId = context._id
+     
+    //   if (context._id) {
+    //     const userData = await Profile.findOne({ _id: userId })
+    //     return userData
+    //   } throw AuthenticationError
+    // },
 
 
 
