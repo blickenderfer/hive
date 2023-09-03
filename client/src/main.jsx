@@ -19,7 +19,6 @@ import Profile from './components/pages/Profile';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login.jsx';
 import Dashboard from './components/pages/Dashboard.jsx';
-import ReviewDisplay from './components/pages/ReviewDisplay.jsx'
 
 const router = createBrowserRouter([
   {
