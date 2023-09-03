@@ -164,8 +164,16 @@ body {
   border-radius: 10px;
 }
 
-.footer-copyright {
-  display: flex;
 
-  
+.container {
+  flex: 1; /* This ensures that the container grows to fill the remaining space. */
+}
+
+
+.page-footer {
+  background-color: black;
+  position: absolute; /* Ensure the footer stays at the bottom of the viewport. */
+  bottom: 0; /* Position the footer at the bottom of the viewport. */
+  width: 100%;
+  padding-top: 10px;
 }

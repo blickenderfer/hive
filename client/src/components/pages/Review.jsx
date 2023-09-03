@@ -61,7 +61,7 @@ export default function Review() {
     return (
         <>
             <div className='section center-align'>
-                <h1 className="">Write a review</h1>
+                <h1 className="white-text">Write a review</h1>
             </div>
             <div className="section row">
                 <form className="col s12">
@@ -73,7 +73,7 @@ export default function Review() {
                         </div>
                     </div>
                     <div className="row center-align">
-                        <button type="submit" onClick={reviewHandler}>Submit!</button>
+                        <button type="submit" className="waves-effect waves-light btn-small" onClick={reviewHandler}>Submit!</button>
                     </div>
                 </form>
             </div>
