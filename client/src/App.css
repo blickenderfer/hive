@@ -164,6 +164,8 @@ body {
   border-radius: 10px;
 }
 
-.tmntgif{
-  justify-content: center;
+.footer-copyright {
+  display: flex;
+
+  
 }
