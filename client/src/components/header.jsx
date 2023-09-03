@@ -21,11 +21,7 @@ export default function Header({ handlePageChange }) {
                 <Link to="/profile">Profile</Link>
               </a>
             </li>
-            <li>
-              <a>
-                <Link to="/review">Reviews</Link>
-              </a>
-            </li>
+
             {Auth.loggedIn() ? (
               <li>
                 <a
@@ -43,7 +39,7 @@ export default function Header({ handlePageChange }) {
               </li>
             )}
           </ul>
-         
+
         </div>
       </nav>
     </>

@@ -23,6 +23,7 @@ type Game {
     released: String
     genre: String
     platforms: String
+    review: String
 }
 
 type Trophy {
@@ -83,8 +84,9 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     deleteGame(_id: String!): User
+    addReview(_id: String!, text: String): User
     addTrophy(username: String!, trophy: ID!): User
-    addReview(reviewId: String!, game: ID!, body: String!): Reviews
+    # addReview(reviewId: String!, game: ID!, body: String!): Reviews
     # also going to need a delete review mutation
     addFriend(username: String!, friendUsername: String!): User
     saveToFavorites(id: ID, title: String, released: String): User
