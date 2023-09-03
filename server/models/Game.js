@@ -17,7 +17,10 @@ const gameSchema = new Schema({
         type: String,
     },
     platforms: {
-        type: String,
+        type: String
+    },
+    review: {
+        type: String
     }
 });
 

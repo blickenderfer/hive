@@ -19,6 +19,7 @@ import Profile from './components/pages/Profile';
 import Signup from './components/pages/Signup';
 import Login from './components/pages/Login.jsx';
 import Dashboard from './components/pages/Dashboard.jsx';
+import ReviewDisplay from './components/pages/ReviewDisplay.jsx'
 
 const router = createBrowserRouter([
   {
@@ -39,19 +40,22 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <Dashboard />
       },
-       {
-        path: '/review',
+
+      {
+        path: '/review/:id',
         element: <Review />
       },
 
-        {path: '/profile',
+
+      {
+        path: '/profile',
         element: <Profile />
-    }
+      }
 
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 )

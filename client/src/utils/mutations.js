@@ -45,6 +45,17 @@ mutation DeleteGame($_id: String!) {
 }
 `
 
+export const ADD_REVIEW = gql`
+mutation Mutation($id: String!, $text: String) {
+  addReview(_id: $id, text: $text) {
+    games {
+      _id
+      title
+    }
+  }
+}
+`
+
 
 
 // export const ADD_REVIEW = gql`

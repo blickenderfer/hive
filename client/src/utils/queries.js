@@ -61,6 +61,7 @@ query GetFavorites {
     _id
     released
     title
+    review
   }
 }
 `

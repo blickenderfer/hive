@@ -1,6 +1,6 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { DELETE_GAME } from '../../utils/mutations';
 
@@ -12,7 +12,8 @@ import Auth from '../../utils/auth'
 
 const Profile = () => {
     const [deleteSaveGame, { error, data2 }] = useMutation(DELETE_GAME);
-    
+    const navigate = useNavigate();
+
 
 
     const deleteGame = async (_id) => {
@@ -23,14 +24,21 @@ const Profile = () => {
                 _id: _id
             }
         })
-        window.location.reload()  
+        window.location.reload()
     }
     const { profileId } = useParams();
-    const { data } = useQuery(GET_FAV);
+    const { data, refetch } = useQuery(GET_FAV);
+
+
     const { data: user } = useQuery(QUERY_ME, { fetchPolicy: "no-cache" })
     const userData = user?.me || {}
     console.log(userData)
     console.log("what is data", data)
+
+    useEffect(() => {
+        refetch()
+    })
+
     return (
         <>
 
@@ -48,9 +56,15 @@ const Profile = () => {
                                             <span className="card-title game-name">{d.title}</span>
                                             <span className="card-title release-date">Released {d.released}</span>
                                             <span className='card-title game-id'>{d.id}</span>
+                                            {
+                                                d.review && <span className='card-title game-review'>{d.review}</span>
+                                            }
+
                                             <button className='deletebtn' id="deletebtn" onClick={(e) => {
                                                 deleteGame(d._id)
                                             }}>Remove from Favorites</button>
+
+                                            <button onClick={() => navigate(`/review/${d._id}`)}>Add a Review</button>
                                         </div>
 
                                     </div>

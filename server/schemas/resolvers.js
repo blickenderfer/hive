@@ -36,20 +36,20 @@ const resolvers = {
         throw error;
       }
     },
-    me: 
-    
-    async (_, args, context) => {
-      const userId = context._id
-      console.log(userId);
-      const profile = await Profile.findById(userId);
-      return profile
-    },
-    
+    me:
+
+      async (_, args, context) => {
+        const userId = context._id
+        console.log(userId);
+        const profile = await Profile.findById(userId);
+        return profile
+      },
+
     // async (parent, args, context) => {
     //   console.log("--------------")
     //   console.log(context)
     //   const userId = context._id
-     
+
     //   if (context._id) {
     //     const userData = await Profile.findOne({ _id: userId })
     //     return userData
@@ -139,13 +139,40 @@ const resolvers = {
           { $pull: { games: { _id: _id } } },
           { new: true }
         );
-          const user = await Profile.findOne({ _id: context._id })
-            .populate('games')
-            // .populate('trophies')
-            .populate('reviews.game');
-          // console.log(user);
+        const user = await Profile.findOne({ _id: context._id })
+          .populate('games')
+          // .populate('trophies')
+          .populate('reviews.game');
+        // console.log(user);
         // return updatedProfile;
         return user;
+      }
+
+    },
+    addReview: async (parent, { _id, text }, context) => {
+
+      if (context._id) {
+
+        const user = await Profile.findOne({ _id: context._id });
+
+        console.log("review", user.games);
+
+        for (let i = 0; i < user.games.length; i++) {
+          console.log(_id, user.games[i]._id.valueOf())
+          if (_id === user.games[i]._id.valueOf()) {
+            user.games[i].review = text
+          }
+        }
+
+        console.log(user.games)
+
+        const updatedProfile = await Profile.findOneAndUpdate(
+          { _id: context._id },
+          { games: user.games },
+          { new: true }
+        );
+
+        return updatedProfile;
       }
 
     },
@@ -153,7 +180,7 @@ const resolvers = {
       const userId = context.email;
       console.log("resolver save to favorites", id, title, released)
       console.log("in resolove", context)
-      const user = await Profile.findOneAndUpdate({email: userId}, {
+      const user = await Profile.findOneAndUpdate({ email: userId }, {
         $push: {
           games: {
             gameId: id,
