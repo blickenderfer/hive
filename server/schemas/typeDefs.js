@@ -1,6 +1,4 @@
-//import { gql } from '@apollo/client';
-//const { gql } = require('@apollo/client')
-
+//Future development would be adding trophies to a users profile, as well as a friends list
 const typeDefs = `#graphql
 type User {
     _id: ID
@@ -86,7 +84,6 @@ type Mutation {
     deleteGame(_id: String!): User
     addReview(_id: String!, text: String): User
     addTrophy(username: String!, trophy: ID!): User
-    # addReview(reviewId: String!, game: ID!, body: String!): Reviews
     # also going to need a delete review mutation
     addFriend(username: String!, friendUsername: String!): User
     saveToFavorites(id: ID, title: String, released: String): User
