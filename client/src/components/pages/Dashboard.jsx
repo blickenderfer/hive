@@ -22,32 +22,7 @@ export default function Dashboard() {
     console.log(userData)
 
 
-    // if (gameId === gameToSave.ID) {
-
-    // }
-    // setSavedGameIds([...saveGame, gameToSave.gameId]);
-
-
-
-    // console.log(searchedGames);
-    // const gameToSave = searchedGames.find((game) => game.gameId === gameId);
-    // const token = Auth.loggedin() ? Auth.getToken : null;
-    // if (!token) {
-    //     return false;
-    // }
-    // try {
-    //     const { data } = await saveGame({
-    //         variables: {gameData: {...gameToSave} },
-    //     });
-    //     console.log(gameToSave);
-
-    // } catch (err) {
-    //     console.error(err);
-    // }
-    // };
-
-    //find a way to save the games loaded by the query so they can be saved to profile??
-    //WHY IN THE FUCK IS THIS SO DIFFICULT
+    
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("")
     const { data, loading, error, refetch, fetchMore } = useQuery(ALL_GAMES, {
@@ -60,9 +35,9 @@ export default function Dashboard() {
     
       
 
-
+    //OnClick for saving specific games to a profile
     const handleSaveGame = async ({ id, title, released }) => {
-        //console.log(gameId);
+       
 
         console.log("adding to favorites:", id, title, released)
 
@@ -74,12 +49,6 @@ export default function Dashboard() {
             }
 
         })
-        /*
-        const gamesArray = data.getVideoGames;
-        console.log(gamesArray);
-        const faveGame = gamesArray.filter((game) => game.id === gameId);
-        */
-        //console.log(faveGame);
         console.log("did we save?", data2)
 
     };
@@ -94,21 +63,6 @@ export default function Dashboard() {
 
     return (
         <>
-            {/* <div class="input-field col s12">
-          <input id="search" type="search"/>
-          <label>Game Search</label>
-          <span class="helper-text" data-error="wrong" data-success="right"></span>
-          <button class="search-submit" type="submit">Search</button>
-          </div>
-
-        <div>
-        <label>Review Title</label>
-          <input id="search" type="search"/>
-          <span class="helper-text" data-error="wrong" data-success="right">Review</span>
-          <textarea></textarea>
-          <button class="review-submit" type="submit">Submit</button>
-        </div> */}
-
             <div className="row">
  
                 <div className="col s3 user-section">
@@ -119,19 +73,12 @@ export default function Dashboard() {
             <img className="spaceGif" src={space} alt="space-invader" />
           </div>
                 </div>
-
-                {/* will need a Games, Reviews, Friends page to match up with the links above. games page will be the games added to collection, Reviews will be a list of games you and/or your friends have reviewed, Friends is a list of users that are your "friends".  Change the h3 with Welcome, Username to Welcome {user.userName}  In the games page need each card to contain a button to add a review and a maybe a dropdown to show all reviews on the games.  Reviews will need to have cards with the game title and then associated reviews and a textbox to add review, and users should be able to delete their own review.  friends page should be a card for each friend, render user map function.  include delete friend button and maybe just a count of how many games they have added and how many reviews they have left */}
-
                 <div className="col s9 game-search-section">
                     <div className="input-field col s6">
-
+                {/*This code takes the value of the input box, and searches the api w/it */}
                         <input placeholder="Find Games" id="game-search" type="text" className="validate white-text" onChange={(e => setSearch(e.target.value))} />
                         <button className="search-button" onClick={searchHandler}>Search</button>
-
                     </div>
-
-
-                    {/* const gameData = data.getVideoGames*/}
                 </div>
                 {/* this code put the results into cards  */}
                 <div className="col s9">

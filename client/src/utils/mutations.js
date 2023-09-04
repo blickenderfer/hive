@@ -55,13 +55,3 @@ mutation Mutation($id: String!, $text: String) {
   }
 }
 `
-
-
-
-// export const ADD_REVIEW = gql`
-// mutation writeReview($username:String!, $game: ID!, $body: String!) {
-//   writeReview(username: $username, game: $ID, body: $body) {
-
-//   }
-// }
-// `

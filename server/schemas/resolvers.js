@@ -1,35 +1,17 @@
-//finish this? my brain small 
-// const { Profile } = require('../models/Profile');
-//api key 68eb0690763d46b0b8c318062068f9bb
+
 
 const { Profile, Game, Trophy, Review } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const axios = require('axios');
 require('dotenv').config()
-// console.log(process.env.REACT_APP_API_KEY)
-//url to search api for games 
-// const apiOptions = {
-//   method: 'GET',
-//   url: 'https://rawg-video-games-database.p.rapidapi.com/games',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     'X-rapid-api-Key': '68eb0690763d46b0b8c318062068f9bb',
-//     'X-rapid-api-Host': 'rawg-video-games-database.p.rapidapi.com' 
-//   }
-// };
 
 const resolvers = {
   Query: {
     userProfile: async (_, { username, password }) => {
-      //use context here please
-      //cross reference password and fail if it doesn't match
-
       try {
         const user = await Profile.findOne({ username })
           .populate('games')
-          // .populate('trophies')
           .populate('reviews.game');
-        // console.log(user);
         console.log(JSON.stringify(user, null, 2));
         return user;
       } catch (error) {
@@ -44,18 +26,6 @@ const resolvers = {
         const profile = await Profile.findById(userId);
         return profile
       },
-
-    // async (parent, args, context) => {
-    //   console.log("--------------")
-    //   console.log(context)
-    //   const userId = context._id
-
-    //   if (context._id) {
-    //     const userData = await Profile.findOne({ _id: userId })
-    //     return userData
-    //   } throw AuthenticationError
-    // },
-
 
 
     // this one is the one that works so far showing results. 
@@ -106,31 +76,6 @@ const resolvers = {
   },
 
   Mutation: {
-
-    // saveGame: async (parent, { gameData }, context) => {
-    //   if (context.user) {
-    //     const updatedUser = await Profile.findByIdAndUpdate(
-    //       { _id: context.user._id },
-    //       { $push: { games: gameData } },
-    //       { new: true }
-    //     );
-    //     return updatedUser;
-    //   }
-    //   throw AuthenticationError
-    // },
-    //old savegame mutation 
-    // saveGame: async (parent, { gameData }, context) => {
-    //   console.log(context);
-    //   console.log(gameData);
-    //   const result = await Profile.findByIdAndUpdate(context.user._id, {
-    //     ["$push"]: {
-    //       games: { gameData }
-    //       }
-    //     }
-    //   );
-    //   return result;
-    // }, 
-
     deleteGame: async (parent, { _id }, context) => {
       // console.log("delete game", context)
       if (context._id) {
@@ -141,14 +86,12 @@ const resolvers = {
         );
         const user = await Profile.findOne({ _id: context._id })
           .populate('games')
-          // .populate('trophies')
           .populate('reviews.game');
-        // console.log(user);
-        // return updatedProfile;
         return user;
       }
 
     },
+    //add a review to a specific game
     addReview: async (parent, { _id, text }, context) => {
 
       if (context._id) {
@@ -176,6 +119,7 @@ const resolvers = {
       }
 
     },
+    //save game
     saveToFavorites: async (parent, { id, title, released }, context) => {
       const userId = context.email;
       console.log("resolver save to favorites", id, title, released)
@@ -193,20 +137,13 @@ const resolvers = {
       return user;
     },
 
-
+    //create new user
     addUser: async (parent, { username, email, password }) => {
       const newUser = await Profile.create({ username, email, password })
       const token = signToken(newUser);
       return { token, newUser };
 
     },
-    // Update a user's profile information
-    /*
-    updateProfile: async (parent, { input }, { dataSources }) => {
- 
-      const updatedProfile = await dataSources.profileAPI.updateProfile(input);
-      return updatedProfile;
-    }, */
     // Checks username and password validation. 
     login: async (parent, { email, password }, context) => {
 
@@ -218,11 +155,6 @@ const resolvers = {
         throw AuthenticationError;
       }
 
-      // const correctPassword = user.verifyPassword(password);
-
-      // if (!correctPassword) {
-      //   throw new Error('Incorrect password');
-      // }
 
       const correctPw = await profile.isCorrectPassword(password);
 

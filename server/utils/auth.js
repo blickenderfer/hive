@@ -1,5 +1,3 @@
-//literally copied from repo, probably need to update for our uses, maybe not?
-// const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
 const secret = 'mysecretssshhhhhhh';

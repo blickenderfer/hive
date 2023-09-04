@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-//notes: needs better spacing between elements, want lines 15-18 further down the page, with the header and subheader (lines 8-11) in the center. Overall work in progress 
-//backgound image is a placeholder for now
 export default function Homepage() {
     return (
         <>
