@@ -1,4 +1,6 @@
-### HIVE: A videogame review application
+### HIVE
+
+A videogame review application
 
 ## Table of Contents 
 
