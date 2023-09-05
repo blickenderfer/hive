@@ -1,7 +1,4 @@
-
-### Name
-
-HIVE
+### HIVE: A videogame review application
 
 ## Table of Contents 
 
@@ -24,7 +21,7 @@ https://opensource.org/license/mit-0/
 Hive is your next stop for videogame reviews! We wanted to challenge ourselves and create a full-stack application using current MERN technology, and we created Hive. With Hive users can create profiles, search games through an intregrated api, save those games to their unique profiles, and write reviews on each one! So come check it out!
     
 ### Link
-![Live site here!](https://hive1-03d1291901c2.herokuapp.com/)
+[Live site here!](https://hive1-03d1291901c2.herokuapp.com/)
 
 ### Installation
 
