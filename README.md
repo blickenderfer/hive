@@ -44,10 +44,10 @@ In the future there are many features we would like to add, the functionality fo
 
 If you have any questions about the repo, open an issue or contact the dev team directly! 
 
-- [Amanda](https://github.com/Pandax19) [Email](mailto:ajwhitley@comcast.net)
-- [Claire](https://github.com/Blickenderfer) [Email](mailto:ecblickenderfer@gmail.com)
-- [Jon](https://github.com/Lalu423/) [Email](mailto:jonathanlalu@gmail.com)
-- [Aubrey](https://github.com/Shadowasders) [Email](mailto:aubreyasdersmckinney@gmail.com)
+- [Amanda: Github](https://github.com/Pandax19),  [Email](mailto:ajwhitley@comcast.net)
+- [Claire: Github](https://github.com/Blickenderfer),  [Email](mailto:ecblickenderfer@gmail.com)
+- [Jon: Github](https://github.com/Lalu423/),  [Email](mailto:jonathanlalu@gmail.com)
+- [Aubrey: Github](https://github.com/Shadowasders),  [Email](mailto:aubreyasdersmckinney@gmail.com)
 
 Any of us would be happy to assist you!
 
