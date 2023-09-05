@@ -35,7 +35,10 @@ This site is used for creating game reviews, but can also be used to search for 
 If you'd like to contribute, please reach out to one of the dev team! Our emails are listed below, and we'd each be happy to hear suggestions!
 
 ### Future
-In the future there are many features we would like to add, the functionality for users to add friends and visit other profiles to check out other reviews. 
+In the future there are many features we would like to add!
+- the functionality for users to add friends and visit other profiles to check out other reviews.
+- further styling, and polishing
+- Linking to a game trophy api to allow users to link their Xbox Live/PSN/Playstation profiles to their account and show their accomplishments 
 
 ### Questions
 
