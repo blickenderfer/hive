@@ -31,7 +31,7 @@ export default function Review() {
             <div className='section center-align'>
                 <h1 className="white-text">Write a review</h1>
             </div>
-            <div className="section row">
+            <div className="section row ">
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s6 offset-s3">
@@ -41,7 +41,7 @@ export default function Review() {
                         </div>
                     </div>
                     <div className="row center-align">
-                        <button type="submit" onClick={reviewHandler}>Submit!</button>
+                        <button type="submit" className='submit-button' onClick={reviewHandler}>Submit!</button>
                     </div>
                 </form>
             </div>
