@@ -96,11 +96,15 @@ body {
 
 .testbg {
   height: 40vh;
-  /* background-color: blue; */
-  /* box-shadow: 1px 1px 30px var(--neon-bg-color); */
 }
 
-/*If possible set the boxshadows of the info sections on homepage to have the neon? Or the border? I messed with the css and couldn't get it to work w/a variable, might need to be hard coded...*/
+.btnspace {
+  margin-right: 1em;
+}
+
+.whitbtm {
+  border-bottom: 2px dashed white;
+}
 
 /*login screen styling below*/
 
@@ -138,7 +142,12 @@ body {
   border-color: rgb(17, 180, 191);
 }
 
-.search-button {
+.submit-button {
+  width: 40vw;
+}
+
+.search-button,
+.submit-button {
   border-radius: 30px;
   background: rgb(17, 180, 191);
   border-color: rgb(17, 180, 191);

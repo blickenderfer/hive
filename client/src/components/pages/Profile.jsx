@@ -44,9 +44,9 @@ const Profile = () => {
 
             <div className="white-text">
                 <div className="userinfo">
-                    <p className="user-greeting">Hi, {userData.username}! View your saved games here.</p>
+                    <p className="user-greeting center-align">Hi, {userData.username}! View your saved games here.</p>
                 </div>
-                <div className="col s9">
+                <div className="col s12">
                     {data !== undefined && (
                         <div className="row">
                             {data.getFavorites.map(d => (
@@ -54,19 +54,19 @@ const Profile = () => {
                                     <div className="card blue-grey darken-1 game-card">
                                         <div className="card-content white-text">
                                             <span className="card-title game-name">{d.title}</span>
-                                            <span className="card-title release-date">Released {d.released}</span>
+                                            <span className="card-title release-date whitbtm">Released {d.released}</span>
                                             <span className='card-title game-id'>{d.id}</span>
                                             {
                                                 d.review && <span className='card-title game-review'>{d.review}</span>
                                             }
-
-                                            <button className='deletebtn' id="deletebtn" onClick={(e) => {
+                                            
+                                            <button className='deletebtn btnspace col s3 offset-s3 botpad' id="deletebtn" onClick={(e) => {
                                                 deleteGame(d._id)
                                             }}>Remove from Favorites</button>
 
-                                            <button onClick={() => navigate(`/review/${d._id}`)}>Add a Review</button>
+                                            <button className='col s3' onClick={() => navigate(`/review/${d._id}`)}>Add a Review</button>
                                         </div>
-
+                                    
                                     </div>
                                 </div>
                             ))}
