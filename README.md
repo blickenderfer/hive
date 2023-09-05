@@ -3,13 +3,6 @@
 
 HIVE
 
-![Link](https://hive1-03d1291901c2.herokuapp.com/)
-![Link](https://github.com/blickenderfer/hive)
-
-
-
-
-
 ## Table of Contents 
 
 * [Installation](#installation)
@@ -18,41 +11,45 @@ HIVE
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contribute](#contribute)
-* [Tested](#tested)
+* [Future](#future)
 * [Questions](#questions)
 
 
-    
+![Hive Screenshot](https://github.com/blickenderfer/hive/assets/99014955/5246c0b9-27fd-44ed-bd56-6119895e779e)
+
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+https://opensource.org/license/mit-0/
     
 ### Description
-    
-The goal of this project was to create a unique website using react GraphQL, Node.js and Express.js servers, while using MongoDB and Mongoose ODM for the databases.  We Created queries and mutations for retrieving, adding, updating, and deleting data, and deployed our site with Heroku.  With this site, a user will be able to create a profile and log in, search for video games, add the games to their dashboard, review the added games, and follow links for more details about the games.
+Hive is your next stop for videogame reviews! We wanted to challenge ourselves and create a full-stack application using current MERN technology, and we created Hive. With Hive users can create profiles, search games through an intregrated api, save those games to their unique profiles, and write reviews on each one! So come check it out!
     
 ### Link
-
-https://opensource.org/license/mit-0/
+![Live site here!](https://hive1-03d1291901c2.herokuapp.com/)
 
 ### Installation
 
-no install necessary 
+No Installation is necessary, check out the applicaiton through the link provided, and enjoy yourself.
 
 ### Usage
 
-web browser
+This site is used for creating game reviews, but can also be used to search for games in a specific series, or keep a wishlist of games one wants to play in an easily accessed setting. 
 
 ### Contribute
+If you'd like to contribute, please reach out to one of the dev team! Our emails are listed below, and we'd each be happy to hear suggestions!
 
-email
-
-### Tested
-
-manually through milestones 
+### Future
+In the future there are many features we would like to add, the functionality for users to add friends and visit other profiles to check out other reviews. 
 
 ### Questions
 
-If you have any questions about the repo, open an issue or contact me directly at ajwhitley@comcast.net, ecblickenderfer@gmail.com, jonathanlalu@gmail.com . You can find more of my work at [Pandax19, Blickenderfer, Shadowasders, Lalu423] (https://github.com/Pandax19, https://github.com/Blickenderfer, https://github.com/Shadowasders, https://github.com/Lalu423/).
+If you have any questions about the repo, open an issue or contact the dev team directly! 
 
+- [Amanda](https://github.com/Pandax19) [Email](mailto:ajwhitley@comcast.net)
+- [Claire](https://github.com/Blickenderfer) [Email](mailto:ecblickenderfer@gmail.com)
+- [Jon](https://github.com/Lalu423/) [Email](mailto:jonathanlalu@gmail.com)
+- [Aubrey](https://github.com/Shadowasders) [Email](mailto:aubreyasdersmckinney@gmail.com)
+
+Any of us would be happy to assist you!
 
 ### Section 
 
